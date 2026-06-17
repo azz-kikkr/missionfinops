@@ -1,27 +1,28 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog: Mission FinOps</title>
   <meta name="description" content="Field notes from a solo AWS FinOps practice. What I see auditing real accounts, the patterns that keep showing up, and the workflow behind Kulshan.">
-  <meta name="theme-color" content="#16131e">
+  <meta name="theme-color" content="#0f1219">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://missionfinops.com/blog/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Blog Â· Mission FinOps">
+  <meta property="og:title" content="Blog · Mission FinOps">
   <meta property="og:description" content="Field notes from a solo AWS FinOps practice.">
   <meta property="og:url" content="https://missionfinops.com/blog/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Blog Â· Mission FinOps">
+  <meta name="twitter:title" content="Blog · Mission FinOps">
   <meta name="twitter:description" content="Field notes from a solo AWS FinOps practice.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%2316131e'/><text x='16' y='22' text-anchor='middle' font-family='monospace' font-size='13' font-weight='700' fill='%23b794f6'>MF</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
   <style>
-:root{--bg:#16131e;--bg-2:#1c1828;--bg-deep:#0f0d16;--bg-code:rgba(183,148,246,0.05);--text:#ece9e1;--text-dim:#a39ab4;--text-mute:#6f6884;--purple:#b794f6;--purple-h:#c9aef9;--purple-soft:rgba(183,148,246,0.10);--orange:#e8864a;--green:#6dd4a0;--border:rgba(255,231,200,0.06);--border-vis:rgba(255,231,200,0.14);--border-purple:rgba(183,148,246,0.30);--f-sans:'General Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--f-mono:'JetBrains Mono','SF Mono',Consolas,monospace;--f-serif:'Instrument Serif',Georgia,serif;--maxw:960px;--maxwn:1180px;--maxwx:1320px;--ease:cubic-bezier(0.16,1,0.3,1)}
+:root{--bg:#0f1219;--bg-2:#1c1828;--bg-deep:#0f0d16;--bg-code:rgba(183,148,246,0.05);--text:#ece9e1;--text-dim:#a39ab4;--text-mute:#6f6884;--purple:#b794f6;--purple-h:#c9aef9;--purple-soft:rgba(183,148,246,0.10);--orange:#e8864a;--green:#6dd4a0;--border:rgba(255,231,200,0.06);--border-vis:rgba(255,231,200,0.14);--border-purple:rgba(183,148,246,0.30);--f-sans:'General Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--f-mono:'JetBrains Mono','SF Mono',Consolas,monospace;--f-serif:'Instrument Serif',Georgia,serif;--maxw:960px;--maxwn:1180px;--maxwx:1320px;--ease:cubic-bezier(0.16,1,0.3,1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 body{font-family:var(--f-sans);font-weight:400;font-size:16px;line-height:1.65;color:var(--text);background:var(--bg);overflow-x:hidden;position:relative}
@@ -67,7 +68,7 @@ h1{font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.04;letter-spacing:-0.035em
 .post-title{font-family:var(--f-sans);font-weight:600;font-size:clamp(1.35rem,2.4vw,1.7rem);letter-spacing:-0.02em;margin-bottom:0.65rem;line-height:1.2;max-width:34ch}
 .post-title a{color:var(--text);border:none;display:inline-flex;align-items:baseline;gap:0.65rem;transition:color 0.2s}
 .post-title a:hover{color:var(--purple);border:none}
-.post-title a::after{content:'â†’';color:var(--purple);font-family:var(--f-mono);font-size:0.85em;transition:transform 0.25s var(--ease)}
+.post-title a::after{content:'→';color:var(--purple);font-family:var(--f-mono);font-size:0.85em;transition:transform 0.25s var(--ease)}
 .post-title a:hover::after{transform:translateX(3px)}
 .post-excerpt{color:var(--text-dim);font-size:1rem;line-height:1.65;max-width:62ch}
 
@@ -94,23 +95,27 @@ h1{font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.04;letter-spacing:-0.035em
 
 <nav class="nav" id="nav" aria-label="Primary">
   <div class="nav-inner">
-    <a href="/" class="nav-brand"><span class="em">~/</span>missionfinops</a>
+    <a href="/" class="nav-brand"><span class="em">Kulshan</span> &middot; MissionFinOps</a>
     <div class="nav-links">
-      <a href="/sample/">Sample</a>
-      <a href="/work-with-me/">Work with me</a>
-      <a href="/blog/" aria-current="page">Blog</a>
-      <a href="/podcast/">Podcast</a>
+      <a href="/sample/">Sample Report</a>
+      <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+      <a href="/#private-preview">Private Preview</a>
+      <a href="mailto:hello@missionfinops.com">Contact</a>
     </div>
     <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
   </div>
   <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
-    <a href="/sample/">Sample</a>
-    <a href="/work-with-me/">Work with me</a>
-    <a href="/blog/">Blog</a>
-    <a href="/podcast/">Podcast</a>
-    <a href="mailto:hello@missionfinops.com">hello@missionfinops.com</a>
+    <a href="/sample/">Sample Report</a>
+    <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+    <a href="/#private-preview">Private Preview</a>
+    <a href="mailto:hello@missionfinops.com">Contact</a>
   </div>
 </nav>
+<!-- PAGE BANNER -->
+<div class="page-banner" style="position:relative;height:240px;overflow:hidden;margin-top:52px">
+  <div style="position:absolute;inset:0;background:url('../assets/hero-banner-photo.jpg') center 40%/cover no-repeat;filter:brightness(0.45) saturate(0.8)"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,18,25,0.6) 0%,rgba(15,18,25,0.85) 100%)"></div>
+</div>
 
 <header class="hero">
   <div class="wrap-n">
@@ -124,17 +129,17 @@ h1{font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.04;letter-spacing:-0.035em
   <div class="wrap-n">
     <ul class="post-list">
       <li>
-        <p class="post-meta"><span class="num">2026-06-25</span> &nbsp;Â·&nbsp; <span class="cat">explainer</span></p>
+        <p class="post-meta"><span class="num">2026-06-25</span> &nbsp;·&nbsp; <span class="cat">explainer</span></p>
         <h2 class="post-title"><a href="/blog/ec2-other-junk-drawer/">EC2-Other is hiding your real problem.</a></h2>
         <p class="post-excerpt">Your top Cost Explorer line item says "EC2-Other." That is not a service. That is a junk drawer. And somewhere inside it, a NAT Gateway is quietly billing you more than most of your actual EC2 instances.</p>
       </li>
       <li>
-        <p class="post-meta"><span class="num">2026-06-18</span> &nbsp;Â·&nbsp; <span class="cat">workflow</span></p>
+        <p class="post-meta"><span class="num">2026-06-18</span> &nbsp;·&nbsp; <span class="cat">workflow</span></p>
         <h2 class="post-title"><a href="/blog/cost-explorer-first/">Cost Explorer first, the bill second.</a></h2>
         <p class="post-excerpt">A workflow I run on every AWS account I audit, and why the service-level bill view hides the things that matter.</p>
       </li>
       <li>
-        <p class="post-meta"><span class="num">2026-06-04</span> &nbsp;Â·&nbsp; <span class="cat">field notes</span></p>
+        <p class="post-meta"><span class="num">2026-06-04</span> &nbsp;·&nbsp; <span class="cat">field notes</span></p>
         <h2 class="post-title"><a href="/blog/nat-gateway-blind-spot/">The $40,000 NAT Gateway nobody noticed.</a></h2>
         <p class="post-excerpt">A field note about how cross-AZ traffic and a misconfigured workload turned three NAT Gateways into a five-figure annual line nobody could see in the bill.</p>
       </li>
@@ -142,19 +147,21 @@ h1{font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.04;letter-spacing:-0.035em
   </div>
 </section>
 
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">Mission FinOps</div>
-      <div class="footer-tag">Read-only AWS audit, run on your laptop. Built in Mission, BC. <span class="em">*</span> with unicorn flair.</div>
+<footer class="footer" style="padding:3rem 0 2rem;border-top:1px solid rgba(148,184,212,0.08);margin-top:2rem">
+  <div style="max-width:1080px;margin:0 auto;padding:0 1.75rem;display:flex;flex-direction:column;gap:1.5rem">
+    <div style="display:flex;flex-wrap:wrap;gap:1.25rem;font-family:var(--f-mono,monospace);font-size:0.72rem">
+      <a href="/sample/" style="color:#9eafc4">Sample</a>
+      <a href="/policy/" style="color:#9eafc4">IAM Policy</a>
+      <a href="https://github.com/azz-kikkr/kulshan" style="color:#9eafc4">GitHub</a>
+      <a href="/changelog/" style="color:#9eafc4">Changelog</a>
+      <a href="/about/" style="color:#9eafc4">About</a>
+      <a href="/work-with-me/" style="color:#9eafc4">Work with me</a>
+      <a href="mailto:security@missionfinops.com" style="color:#9eafc4">Security</a>
     </div>
-    <div class="footer-col"><div class="footer-col-title">Kulshan</div><ul><li><a href="/sample/">Sample report</a></li><li><a href="/policy/">IAM policy</a></li><li><a href="/changelog/">Changelog</a></li></ul></div>
-    <div class="footer-col"><div class="footer-col-title">Verticals</div><ul><li><a href="/healthtech/">Healthtech</a></li><li><a href="/msp/">MSPs &amp; consultancies</a></li><li><a href="/work-with-me/">Work with me</a></li></ul></div>
-    <div class="footer-col"><div class="footer-col-title">More</div><ul><li><a href="/about/">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="/podcast/">Podcast</a></li><li><a href="mailto:hello@missionfinops.com">hello@missionfinops.com</a></li></ul></div>
-  </div>
-  <div class="footer-bar">
-    <div>MISSION FINOPS &nbsp;Â·&nbsp; Mission, BC</div>
- <div><a href="mailto:security@missionfinops.com">security@missionfinops.com</a></div>
+    <div style="font-family:var(--f-mono,monospace);font-size:0.68rem;color:#5e7389;line-height:1.7">
+      MissionFinOps &middot; Mission, BC, Canada<br>
+      Kulshan is Apache 2.0 open source.
+    </div>
   </div>
 </footer>
 

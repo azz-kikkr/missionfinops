@@ -1,27 +1,28 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sample report: Kulshan</title>
   <meta name="description" content="A Kulshan audit rendered against synthetic fixture data. Real renderer, fake account, no live AWS environment.">
-  <meta name="theme-color" content="#16131e">
+  <meta name="theme-color" content="#0f1219">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://missionfinops.com/sample/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Sample report Â· Kulshan">
+  <meta property="og:title" content="Sample report · Kulshan">
   <meta property="og:description" content="What a Kulshan run looks like.">
   <meta property="og:url" content="https://missionfinops.com/sample/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Sample report Â· Kulshan">
+  <meta name="twitter:title" content="Sample report · Kulshan">
   <meta name="twitter:description" content="What a Kulshan run looks like.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%2316131e'/><text x='16' y='22' text-anchor='middle' font-family='monospace' font-size='13' font-weight='700' fill='%23b794f6'>MF</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
   <style>
-:root{--bg:#16131e;--bg-2:#1c1828;--bg-deep:#0f0d16;--bg-code:rgba(183,148,246,0.05);--text:#ece9e1;--text-dim:#a39ab4;--text-mute:#6f6884;--purple:#b794f6;--purple-h:#c9aef9;--purple-soft:rgba(183,148,246,0.10);--orange:#e8864a;--green:#6dd4a0;--border:rgba(255,231,200,0.06);--border-vis:rgba(255,231,200,0.14);--border-purple:rgba(183,148,246,0.30);--f-sans:'General Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--f-mono:'JetBrains Mono','SF Mono',Consolas,monospace;--f-serif:'Instrument Serif',Georgia,serif;--maxw:960px;--maxwn:1180px;--maxwx:1320px;--ease:cubic-bezier(0.16,1,0.3,1)}
+:root{--bg:#0f1219;--bg-2:#1c1828;--bg-deep:#0f0d16;--bg-code:rgba(183,148,246,0.05);--text:#ece9e1;--text-dim:#a39ab4;--text-mute:#6f6884;--purple:#b794f6;--purple-h:#c9aef9;--purple-soft:rgba(183,148,246,0.10);--orange:#e8864a;--green:#6dd4a0;--border:rgba(255,231,200,0.06);--border-vis:rgba(255,231,200,0.14);--border-purple:rgba(183,148,246,0.30);--f-sans:'General Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--f-mono:'JetBrains Mono','SF Mono',Consolas,monospace;--f-serif:'Instrument Serif',Georgia,serif;--maxw:960px;--maxwn:1180px;--maxwx:1320px;--ease:cubic-bezier(0.16,1,0.3,1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 body{font-family:var(--f-sans);font-weight:400;font-size:16px;line-height:1.65;color:var(--text);background:var(--bg);overflow-x:hidden;position:relative}
@@ -63,7 +64,7 @@ code{font-family:var(--f-mono);font-size:0.85em;background:rgba(255,231,200,0.04
 
 .link-bar{display:flex;flex-wrap:wrap;gap:1.75rem;margin-top:1rem;font-size:0.95rem}
 .link-bar a{font-family:var(--f-sans);font-weight:500;color:var(--text);border:none;border-bottom:1px solid var(--border-vis);padding-bottom:2px;display:inline-flex;align-items:center;gap:0.5rem;transition:border-color 0.2s,color 0.2s,gap 0.25s var(--ease)}
-.link-bar a::after{content:'â†’';color:var(--purple);font-family:var(--f-mono)}
+.link-bar a::after{content:'→';color:var(--purple);font-family:var(--f-mono)}
 .link-bar a:hover{color:var(--purple);border-bottom-color:var(--purple);gap:0.85rem}
 
 .frame-wrap{padding:0 0 4rem}
@@ -94,33 +95,34 @@ code{font-family:var(--f-mono);font-size:0.85em;background:rgba(255,231,200,0.04
 
 <nav class="nav" id="nav" aria-label="Primary">
   <div class="nav-inner">
-    <a href="/" class="nav-brand"><span class="em">Kulshan</span> Â· Mission FinOps</a>
+    <a href="/" class="nav-brand"><span class="em">Kulshan</span> &middot; MissionFinOps</a>
     <div class="nav-links">
-      <a href="/sample/" aria-current="page">Sample</a>
-      <a href="/policy/">IAM Policy</a>
-      <a href="/changelog/">Changelog</a>
-      <a href="/about/">About</a>
-      <a href="/work-with-me/">Work with me</a>
+      <a href="/sample/">Sample Report</a>
       <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+      <a href="/#private-preview">Private Preview</a>
+      <a href="mailto:hello@missionfinops.com">Contact</a>
     </div>
     <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
   <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
-    <a href="/sample/" aria-current="page">Sample</a>
-    <a href="/policy/">IAM Policy</a>
-    <a href="/changelog/">Changelog</a>
-    <a href="/about/">About</a>
-    <a href="/work-with-me/">Work with me</a>
+    <a href="/sample/">Sample Report</a>
     <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+    <a href="/#private-preview">Private Preview</a>
+    <a href="mailto:hello@missionfinops.com">Contact</a>
   </div>
 </nav>
+<!-- PAGE BANNER -->
+<div class="page-banner" style="position:relative;height:240px;overflow:hidden;margin-top:52px">
+  <div style="position:absolute;inset:0;background:url('../assets/hero-banner-photo.jpg') center 40%/cover no-repeat;filter:brightness(0.45) saturate(0.8)"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,18,25,0.6) 0%,rgba(15,18,25,0.85) 100%)"></div>
+</div>
 
 <header class="hero">
   <div class="wrap-n">
     <p class="eyebrow">Sample report</p>
     <h1>What a Kulshan run looks like.</h1>
     <p class="lede">This is the same renderer a real <code>Kulshan report</code> run uses, fed a fixture file from the repo. The format below is exactly what your account would produce. The numbers, account ID, and resource names are invented.</p>
-    <p class="synthetic-banner">SYNTHETIC DATA <span class="em">Â·</span> REAL RENDERER <span class="em">Â·</span> FAKE ACCOUNT</p>
+    <p class="synthetic-banner">SYNTHETIC DATA <span class="em">·</span> REAL RENDERER <span class="em">·</span> FAKE ACCOUNT</p>
     <div class="link-bar">
       <a href="/samples/sample-report.json">View JSON fixture</a>
       <a href="/">Back to homepage</a>
@@ -135,28 +137,21 @@ code{font-family:var(--f-mono);font-size:0.85em;background:rgba(255,231,200,0.04
   </div>
 </section>
 
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">Mission FinOps</div>
-      <div class="footer-tag">Read-only AWS audit, run on your laptop. Built in Mission, BC. <span class="em">*</span> with unicorn flair.</div>
+<footer class="footer" style="padding:3rem 0 2rem;border-top:1px solid rgba(148,184,212,0.08);margin-top:2rem">
+  <div style="max-width:1080px;margin:0 auto;padding:0 1.75rem;display:flex;flex-direction:column;gap:1.5rem">
+    <div style="display:flex;flex-wrap:wrap;gap:1.25rem;font-family:var(--f-mono,monospace);font-size:0.72rem">
+      <a href="/sample/" style="color:#9eafc4">Sample</a>
+      <a href="/policy/" style="color:#9eafc4">IAM Policy</a>
+      <a href="https://github.com/azz-kikkr/kulshan" style="color:#9eafc4">GitHub</a>
+      <a href="/changelog/" style="color:#9eafc4">Changelog</a>
+      <a href="/about/" style="color:#9eafc4">About</a>
+      <a href="/work-with-me/" style="color:#9eafc4">Work with me</a>
+      <a href="mailto:security@missionfinops.com" style="color:#9eafc4">Security</a>
     </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Kulshan</div>
-      <ul><li><a href="/sample/">Sample report</a></li><li><a href="/policy/">IAM policy</a></li><li><a href="/changelog/">Changelog</a></li></ul>
+    <div style="font-family:var(--f-mono,monospace);font-size:0.68rem;color:#5e7389;line-height:1.7">
+      MissionFinOps &middot; Mission, BC, Canada<br>
+      Kulshan is Apache 2.0 open source.
     </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Verticals</div>
-      <ul><li><a href="/healthtech/">Healthtech</a></li><li><a href="/msp/">MSPs &amp; consultancies</a></li><li><a href="/work-with-me/">Work with me</a></li></ul>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">More</div>
-      <ul><li><a href="/about/">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="/podcast/">Podcast</a></li><li><a href="mailto:hello@missionfinops.com">hello@missionfinops.com</a></li></ul>
-    </div>
-  </div>
-  <div class="footer-bar">
-    <div>MISSION FINOPS &nbsp;Â·&nbsp; Mission, BC</div>
- <div><a href="mailto:security@missionfinops.com">security@missionfinops.com</a></div>
   </div>
 </footer>
 

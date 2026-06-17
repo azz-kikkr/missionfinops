@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Concept 2: Sharp angular peak, floating cloud cap -->
+  <rect width="32" height="32" rx="4" fill="#0f1219"/>
+  <!-- Mountain with steeper profile -->
+  <polygon points="16,10 8,25 24,25" fill="#9eafc4"/>
+  <!-- Snow cap accent -->
+  <polygon points="16,10 13,15 19,15" fill="#e8edf3"/>
+  <!-- Lenticular cloud above -->
+  <ellipse cx="16" cy="7" rx="5" ry="1.8" fill="#b794f6" opacity="0.9"/>
+</svg>
