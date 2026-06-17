@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kulshan - The blood test for your AWS bill</title>
+<meta name="description" content="Kulshan is a free, open-source, read-only AWS audit CLI. Local-first FinOps baseline for humans and AI agents. One command, one report. No SaaS. No telemetry.">
+<meta name="theme-color" content="#0f1219">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://missionfinops.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kulshan - The blood test for your AWS bill">
+<meta property="og:description" content="Local-first AWS FinOps baseline. One command, one report. No SaaS.">
+<meta property="og:url" content="https://missionfinops.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kulshan - The blood test for your AWS bill">
+<meta name="twitter:description" content="Local-first AWS FinOps audit. Read-only. One command, one report.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230f1219'/><text x='16' y='22' text-anchor='middle' font-family='monospace' font-size='13' font-weight='700' fill='%23b794f6'>K</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/kulshan-hero.jpg">
+<style>
+:root{
+--bg:#0f1219;--bg-2:#151b24;--bg-3:#1a2230;
+--text:#e8edf3;--text-dim:#9eafc4;--text-mute:#5e7389;
+--accent:#b794f6;--accent-h:#d4b8ff;--accent-soft:rgba(183,148,246,0.10);
+--green:#6dd4a0;--orange:#e8a64a;
+--border:rgba(148,184,212,0.08);--border-vis:rgba(148,184,212,0.18);--border-accent:rgba(183,148,246,0.35);
+--f-sans:'General Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+--f-mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+--maxwn:1080px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--f-sans);font-size:16px;line-height:1.65;color:var(--text);background:var(--bg);overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color 0.2s}
+a:hover{color:var(--accent-h)}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--accent-soft);color:var(--text)}
+.wrap{max-width:var(--maxwn);margin:0 auto;padding:0 1.25rem}
+</style>
+</head>
+<body>
+<style>
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:0.8rem 0;background:rgba(15,18,25,0.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--maxwn);margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--f-mono);font-size:0.75rem;color:var(--text-dim);font-weight:500}
+.nav-brand .em{color:var(--accent)}
+.nav-links{display:flex;gap:1.5rem;font-family:var(--f-sans);font-size:0.82rem;font-weight:500}
+.nav-links a{color:var(--text-dim)}
+.nav-links a:hover{color:var(--accent)}
+.nav-toggle{display:none;padding:8px;flex-direction:column;gap:4px}
+.nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text)}
+.nav-mobile{display:none;flex-direction:column;gap:1rem;padding:1rem 1.25rem;background:rgba(15,18,25,0.97);border-bottom:1px solid var(--border);font-size:0.95rem}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:var(--text-dim)}
+.hero{position:relative;overflow:hidden;padding:5.5rem 0 2.5rem}
+.hero-bg{position:absolute;inset:0;background:url('assets/kulshan-hero.jpg') center 32%/cover no-repeat;filter:brightness(0.65) saturate(0.85)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(15,18,25,0.92) 0%,rgba(15,18,25,0.75) 50%,rgba(15,18,25,0.5) 100%)}
+.hero-content{position:relative;z-index:1}
+.hero h1{font-family:var(--f-sans);font-size:clamp(1.6rem,6vw,2.6rem);font-weight:700;line-height:1.15;margin-bottom:0.75rem}
+.hero h1 .a{color:var(--accent)}
+.hero-sub{font-size:0.9rem;color:var(--text-dim);line-height:1.7;margin-bottom:1rem;max-width:48ch}
+.badges{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem}
+.badge{font-family:var(--f-mono);font-size:0.72rem;padding:0.4rem 0.75rem;border-radius:6px;background:rgba(109,212,160,0.08);border:1px solid rgba(109,212,160,0.22);color:var(--green);display:inline-flex;align-items:center;gap:0.3rem}
+.ctas{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.btn{display:inline-block;padding:0.75rem 1.5rem;border-radius:8px;font-family:var(--f-mono);font-size:0.8rem;font-weight:500;text-align:center;transition:all 0.2s}
+.btn-primary{background:var(--accent);color:var(--bg)}
+.btn-primary:hover{background:var(--accent-h);color:var(--bg);box-shadow:0 0 24px rgba(183,148,246,0.3)}
+.btn-ghost{border:1px solid var(--border-accent);color:var(--accent)}
+.btn-ghost:hover{background:var(--accent-soft)}
+.btn-tertiary{border:1px solid var(--border-vis);color:var(--text-dim);font-size:0.75rem}
+.btn-tertiary:hover{color:var(--accent);border-color:var(--border-accent)}
+</style>
+<style>
+.cmd-block{background:rgba(15,18,25,0.75);border:1px solid var(--border-vis);border-radius:8px;padding:1rem 1.25rem;font-family:var(--f-mono);font-size:0.78rem;color:var(--text-dim);line-height:2;backdrop-filter:blur(6px);margin-bottom:0.5rem}
+.cmd-block .pr{color:var(--green)}
+.cmd-block .cm{color:var(--text)}
+.cmd-note{font-family:var(--f-mono);font-size:0.68rem;color:var(--text-mute);line-height:1.5}
+.report-frame{background:rgba(21,27,36,0.9);border:1px solid var(--border-vis);border-radius:10px;overflow:hidden;box-shadow:0 16px 60px rgba(0,0,0,0.4);margin-top:2rem}
+.report-bar{background:rgba(15,18,25,0.8);padding:7px 12px;display:flex;gap:5px}
+.report-dot{width:8px;height:8px;border-radius:50%}
+.report-dot:nth-child(1){background:#ff5f57}
+.report-dot:nth-child(2){background:#ffbd2e}
+.report-dot:nth-child(3){background:#28c840}
+.report-body{padding:1.25rem;font-family:var(--f-mono);font-size:0.7rem;line-height:1.9;color:var(--text-dim);overflow-x:auto}
+.report-body .g{color:var(--green)}.report-body .w{color:var(--orange)}.report-body .p{color:var(--accent)}.report-body .m{color:var(--text-mute)}
+.section{padding:3.5rem 0;border-top:1px solid var(--border)}
+.section-title{font-family:var(--f-sans);font-size:clamp(1.15rem,4vw,1.5rem);font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.section-sub{font-size:0.85rem;color:var(--text-dim);margin-bottom:1.5rem;line-height:1.7;max-width:56ch}
+.finds-grid{display:grid;grid-template-columns:1fr;gap:0.6rem;margin-top:1.25rem}
+.finds-item{font-family:var(--f-mono);font-size:0.78rem;color:var(--text-dim);padding:0.6rem 0;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:0.5rem}
+.finds-item .ck{color:var(--green);font-size:0.7rem}
+.audience-grid{display:grid;grid-template-columns:1fr;gap:0.5rem;margin-top:1.25rem}
+.audience-item{font-family:var(--f-mono);font-size:0.78rem;color:var(--text-dim);padding:0.5rem 0;display:flex;align-items:baseline;gap:0.5rem}
+.audience-item .dot{color:var(--accent);font-size:0.6rem}
+</style>
+<style>
+.dflow-panel{border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:0.75rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dflow-good{background:var(--bg-2);border:1px solid rgba(109,212,160,0.2)}
+.dflow-bad{background:var(--bg-2);border:1px solid rgba(232,166,74,0.15)}
+.dflow-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;font-family:var(--f-mono);font-size:0.82rem;color:var(--text)}
+.dflow-tag{font-size:0.68rem;padding:0.2rem 0.6rem;border-radius:4px;font-weight:500;white-space:nowrap}
+.dflow-tag.good{background:rgba(109,212,160,0.1);color:var(--green)}
+.dflow-tag.bad{background:rgba(232,166,74,0.08);color:var(--orange)}
+.dflow-row{display:flex;align-items:center;gap:0;min-width:max-content}
+.dflow-step{text-align:center;min-width:110px;flex-shrink:0;padding:0 0.5rem}
+.dflow-num{display:block;font-family:var(--f-mono);font-size:0.62rem;color:var(--text-mute);margin-bottom:0.25rem}
+.dflow-label{display:block;font-family:var(--f-mono);font-size:0.72rem;color:var(--text);font-weight:500;line-height:1.3}
+.dflow-sub{display:block;font-size:0.62rem;color:var(--text-mute);font-family:var(--f-mono);margin-top:0.2rem}
+.dflow-arrow{font-family:var(--f-mono);font-size:0.85rem;padding:0 0.4rem;flex-shrink:0}
+.dflow-arrow.good{color:var(--green)}
+.dflow-arrow.bad{color:var(--orange)}
+.dflow-footer{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;font-family:var(--f-mono);font-size:0.72rem}
+.dflow-fl.good{color:var(--green)}
+.dflow-fl.bad{color:var(--orange)}
+.preview-section{background:var(--bg-2);border:1px solid var(--border-accent);border-radius:12px;padding:2rem 1.5rem;margin-top:1.5rem}
+.preview-section h3{font-family:var(--f-sans);font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:0.75rem}
+.preview-list{display:flex;flex-direction:column;gap:0.4rem;font-family:var(--f-mono);font-size:0.78rem;color:var(--text-dim);margin:1rem 0}
+.preview-list span{display:flex;align-items:baseline;gap:0.4rem}
+.preview-list .ck{color:var(--accent);font-size:0.7rem}
+.why-copy{font-size:0.88rem;color:var(--text-dim);line-height:1.8;margin-bottom:1rem;max-width:56ch}
+.why-copy strong{color:var(--text);font-weight:600}
+.founder-text{font-size:0.88rem;color:var(--text-dim);line-height:1.8;max-width:56ch}
+.founder-text strong{color:var(--text);font-weight:600}
+.founder-tag{font-family:var(--f-mono);font-size:0.72rem;color:var(--text-mute);margin-top:1rem}
+</style>
+<style>
+.footer{padding:3rem 0 2rem;border-top:1px solid var(--border);margin-top:2rem}
+.footer-inner{display:flex;flex-direction:column;gap:1.5rem}
+.footer-links{display:flex;flex-wrap:wrap;gap:1.25rem;font-family:var(--f-mono);font-size:0.72rem}
+.footer-links a{color:var(--text-dim)}
+.footer-links a:hover{color:var(--accent)}
+.footer-meta{font-family:var(--f-mono);font-size:0.68rem;color:var(--text-mute);line-height:1.7}
+.hero-badges-full,.hero-cmd,.hero-right{display:none}
+.hero-trust-mini{display:block}
+@media(min-width:769px){
+  .wrap{padding:0 1.75rem}
+  .hero{padding:8rem 0 3.5rem}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  .hero-badges-full,.hero-cmd,.hero-right{display:block}
+  .hero-trust-mini{display:none}
+  .ctas{flex-direction:row}
+  .btn{min-width:auto}
+  .finds-grid{grid-template-columns:1fr 1fr}
+  .audience-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{flex-direction:row;justify-content:space-between;align-items:flex-start}
+  .nav-toggle{display:none!important}
+  .section{padding:5rem 0}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+  .ctas{flex-direction:column}
+  .ctas .btn{width:100%;text-align:center}
+  .report-body{font-size:0.65rem;padding:1rem}
+  .dflow-panel{padding:1rem}
+  .dflow-step{min-width:85px}
+  .dflow-label{font-size:0.65rem}
+  .dflow-sub{font-size:0.58rem}
+  .dflow-arrow{font-size:0.75rem;padding:0 0.25rem}
+  .dflow-footer{flex-direction:column;align-items:center;gap:0.4rem}
+}
+</style>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand"><span class="em">Kulshan</span> · MissionFinOps</a>
+    <div class="nav-links">
+      <a href="/sample/">Sample Report</a>
+      <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+      <a href="#private-preview">Private Preview</a>
+      <a href="mailto:hello@missionfinops.com">Contact</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-mobile').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile">
+    <a href="/sample/">Sample Report</a>
+    <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+    <a href="#private-preview">Private Preview</a>
+    <a href="mailto:hello@missionfinops.com">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <h1>The <span class="a">blood test</span> for your AWS bill.</h1>
+          <p class="hero-sub">Local-first AWS FinOps baseline. For humans and AI agents.</p>
+          <p class="hero-trust-mini" style="font-family:var(--f-mono);font-size:0.8rem;color:var(--green);margin-bottom:1.25rem">Open source. Read-only. No telemetry.</p>
+          <div class="hero-badges-full">
+            <div class="badges">
+              <span class="badge">Open source</span>
+              <span class="badge">Read-only</span>
+              <span class="badge">No telemetry</span>
+              <span class="badge">Apache 2.0</span>
+            </div>
+          </div>
+          <div class="ctas">
+            <a href="/sample/" class="btn btn-primary">View Sample Report</a>
+            <a href="https://github.com/azz-kikkr/kulshan" class="btn btn-ghost">GitHub</a>
+            <a href="#private-preview" class="btn btn-tertiary">Join Private Preview</a>
+          </div>
+          <div class="hero-cmd">
+            <div class="cmd-block">
+              <span class="pr">$</span> <span class="cm">pip install kulshan</span><br>
+              <span class="pr">$</span> <span class="cm">kulshan report --format html</span>
+            </div>
+            <p class="cmd-note">Works with the AWS credentials you already use. Typical scan: a few minutes.</p>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="report-frame">
+            <div class="report-bar"><div class="report-dot"></div><div class="report-dot"></div><div class="report-dot"></div></div>
+            <div class="report-body">
+              <span class="m">Kulshan FinOps Baseline</span><br><br>
+              <span class="m">Cost Drivers:</span><br>
+              <span class="g">&nbsp; Amazon EC2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $14,200/mo</span> <span class="w">+12%</span><br>
+              <span class="g">&nbsp; Amazon RDS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $4,800/mo</span> <span class="m">stable</span><br>
+              <span class="p">&nbsp; AWS Lambda&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1,200/mo</span> <span class="w">+340% anomaly</span><br><br>
+              <span class="m">Commitments:</span><br>
+              <span class="w">&nbsp; RI/SP coverage: 62%</span> <span class="m">(target: 80%)</span><br>
+              <span class="g">&nbsp; Utilization: 94%</span><br><br>
+              <span class="m">Top Actions:</span><br>
+              <span class="p">1.</span> Investigate Lambda spike<br>
+              <span class="p">2.</span> Increase SP coverage<br>
+              <span class="p">3.</span> Rightsize 2 RDS instances
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT KULSHAN ACTUALLY FINDS -->
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">What Kulshan actually finds</h2>
+    <div class="finds-grid">
+      <div class="finds-item"><span class="ck">&#10003;</span> Cost drivers by service, account, and region</div>
+      <div class="finds-item"><span class="ck">&#10003;</span> Spend changes and anomalies</div>
+      <div class="finds-item"><span class="ck">&#10003;</span> Tagging and ownership gaps</div>
+      <div class="finds-item"><span class="ck">&#10003;</span> Idle or orphaned resources</div>
+      <div class="finds-item"><span class="ck">&#10003;</span> Savings Plan and RI coverage signals</div>
+      <div class="finds-item"><span class="ck">&#10003;</span> Top actions for humans and agents</div>
+    </div>
+    <p style="font-family:var(--f-mono);font-size:0.82rem;color:var(--text-dim);margin-top:1.5rem;max-width:56ch">The goal is not another dashboard. The goal is a trustworthy baseline.</p>
+  </div>
+</section>
+
+<!-- WHO KULSHAN IS FOR -->
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Who Kulshan is for</h2>
+    <div class="audience-grid">
+      <div class="audience-item"><span class="dot">&#9679;</span> FinOps practitioners before governance reviews</div>
+      <div class="audience-item"><span class="dot">&#9679;</span> AWS consultants before customer workshops</div>
+      <div class="audience-item"><span class="dot">&#9679;</span> Platform teams before buying a FinOps platform</div>
+      <div class="audience-item"><span class="dot">&#9679;</span> Engineering leaders investigating cloud spend</div>
+      <div class="audience-item"><span class="dot">&#9679;</span> AI agents that need evidence before recommendations</div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL-FIRST VS SAAS WORKFLOW -->
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Local-first workflow vs SaaS workflow</h2>
+    <p class="section-sub">Two ways to understand your AWS spend. Different tradeoffs.</p>
+
+    <div class="dflow-panel dflow-good">
+      <div class="dflow-header">
+        <strong>Kulshan (local-first)</strong>
+        <span class="dflow-tag good">Your data stays local</span>
+      </div>
+      <div class="dflow-row">
+        <div class="dflow-step"><span class="dflow-num">1</span><span class="dflow-label">Your AWS<br>credentials</span><span class="dflow-sub">Stays on your machine</span></div>
+        <span class="dflow-arrow good">&rarr;</span>
+        <div class="dflow-step"><span class="dflow-num">2</span><span class="dflow-label">Local<br>Kulshan CLI</span><span class="dflow-sub">Runs locally</span></div>
+        <span class="dflow-arrow good">&rarr;</span>
+        <div class="dflow-step"><span class="dflow-num">3</span><span class="dflow-label">Local report<br>JSON / HTML</span><span class="dflow-sub">Stays on your machine</span></div>
+        <span class="dflow-arrow good">&rarr;</span>
+        <div class="dflow-step"><span class="dflow-num">4</span><span class="dflow-label">Review and<br>decide</span><span class="dflow-sub">Insight + actions</span></div>
+      </div>
+    </div>
+
+    <div class="dflow-panel dflow-bad">
+      <div class="dflow-header">
+        <strong>Managed platform workflow</strong>
+        <span class="dflow-tag bad">External data sharing</span>
+      </div>
+      <div class="dflow-row">
+        <div class="dflow-step"><span class="dflow-num">1</span><span class="dflow-label">Your AWS<br>credentials</span><span class="dflow-sub">Shared with provider</span></div>
+        <span class="dflow-arrow bad">&rarr;</span>
+        <div class="dflow-step"><span class="dflow-num">2</span><span class="dflow-label">SaaS collector<br>/ agent</span><span class="dflow-sub">Data collected</span></div>
+        <span class="dflow-arrow bad">&rarr;</span>
+        <div class="dflow-step"><span class="dflow-num">3</span><span class="dflow-label">Vendor<br>analysis</span><span class="dflow-sub">Stored externally</span></div>
+        <span class="dflow-arrow bad">&rarr;</span>
+        <div class="dflow-step"><span class="dflow-num">4</span><span class="dflow-label">Dashboard /<br>insights</span><span class="dflow-sub">Results over time</span></div>
+      </div>
+    </div>
+
+    <div class="dflow-footer">
+      <span class="dflow-fl good">&rarr; Kulshan: Everything stays local. You control the data.</span>
+      <span class="dflow-fl bad">SaaS tools can be powerful, but they usually require external data sharing and onboarding.</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY I BUILT KULSHAN -->
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Why I built Kulshan</h2>
+    <p class="why-copy">Six years working with AWS customers. Hundreds of AWS environments. The same pattern kept showing up.</p>
+    <p class="why-copy"><strong>Teams discuss solutions before understanding the baseline.</strong></p>
+    <p class="why-copy">They buy platforms before understanding the problem. They open Jira storms before knowing which accounts, services, or regions actually matter.</p>
+    <p class="why-copy">Kulshan began as the audit I kept performing manually. Cost Explorer, then cross-referencing, then documenting findings, then summarizing for the customer. Over time it became a CLI.</p>
+    <p class="why-copy">Run one command. Get one report. Start from facts.</p>
+    <p class="why-copy">Then decide whether you need Athena, Cost Intelligence Dashboards, CloudZero, Vantage, consultants, or nothing at all.</p>
+    <p style="font-family:var(--f-mono);font-size:0.85rem;color:var(--accent);font-weight:500;margin-top:1rem">The audit before the platform.</p>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="section">
+  <div class="wrap">
+    <div class="founder-text">
+      <p><strong>Yuvdeep Singh.</strong> Six years working with AWS customers. Hundreds of AWS environments. The repeated pattern: teams discussing solutions before understanding the baseline.</p>
+      <p style="margin-top:0.75rem">Kulshan started as a manual workflow. Eventually it became a CLI. Now it is open source.</p>
+      <p class="founder-tag">MissionFinOps. Mission, British Columbia. Local-first. Read-only. No telemetry.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE PREVIEW -->
+<section class="section" id="private-preview">
+  <div class="wrap">
+    <h2 class="section-title">The agent is the next step</h2>
+    <p class="section-sub">Kulshan creates the evidence baseline. MissionFinOps Agent builds on top of that baseline.</p>
+    <div class="preview-section">
+      <h3>MissionFinOps Agent - Private Preview</h3>
+      <div class="preview-list">
+        <span><span class="ck">&#9670;</span> Private local-first FinOps analysis</span>
+        <span><span class="ck">&#9670;</span> Uses Kulshan evidence as the baseline</span>
+        <span><span class="ck">&#9670;</span> Adds organization context and exceptions</span>
+        <span><span class="ck">&#9670;</span> Helps prepare cost review notes and next actions</span>
+        <span><span class="ck">&#9670;</span> Built for teams exploring AI-assisted FinOps</span>
+      </div>
+      <p style="font-family:var(--f-mono);font-size:0.82rem;color:var(--text-dim);margin-top:1.25rem">Interested in the private preview?</p>
+      <p style="margin-top:0.5rem"><a href="mailto:hello@missionfinops.com" class="btn btn-ghost" style="display:inline-block;margin-top:0.5rem">hello@missionfinops.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" style="text-align:center;padding:4rem 0">
+  <div class="wrap">
+    <h2 class="section-title" style="max-width:none;text-align:center">Get your baseline.</h2>
+    <p style="font-family:var(--f-mono);font-size:0.85rem;color:var(--text-dim);margin:1rem 0 1.5rem">pip install kulshan &middot; kulshan report &middot; done.</p>
+    <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap">
+      <a href="/sample/" class="btn btn-primary">View Sample Report</a>
+      <a href="https://github.com/azz-kikkr/kulshan" class="btn btn-ghost">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="/sample/">Sample</a>
+        <a href="/policy/">IAM Policy</a>
+        <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+        <a href="/changelog/">Changelog</a>
+        <a href="/about/">About</a>
+        <a href="/work-with-me/">Work with me</a>
+        <a href="mailto:security@missionfinops.com">Security</a>
+      </div>
+      <div class="footer-meta">
+        MissionFinOps &middot; Mission, BC, Canada<br>
+        Kulshan is Apache 2.0 open source.
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

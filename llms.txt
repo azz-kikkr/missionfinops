@@ -1,0 +1,17 @@
+# Mission FinOps
+
+> A read-only AWS audit CLI from Mission, BC. Ten audits in one run, locally, with no SaaS backend.
+
+Mission FinOps is a one-person AWS audit advisory practice. The product is Kulshan, a free, open-source, read-only AWS audit CLI. Apache 2.0. The IAM policy file at `/policy/` is additionally offered under CC BY 4.0.
+
+## Pages
+
+- [Home](https://missionfinops.com/): Product overview
+- [Sample report](https://missionfinops.com/sample/): Synthetic-data fixture rendered by the real renderer
+- [IAM policy](https://missionfinops.com/policy/): 147 read-only actions across 30 AWS services, SHA256 attested, downloadable JSON
+- [Changelog](https://missionfinops.com/changelog/): Release history
+- [Healthtech](https://missionfinops.com/healthtech/): AWS configuration evidence for healthtech teams preparing for security reviews
+- [Consultancies and MSPs](https://missionfinops.com/msp/): License arrangement for cloud consultancies and fractional CTOs
+- [About](https://missionfinops.com/about/): Founder story
+- [Work with me](https://missionfinops.com/work-with-me/): Three engagement shapes; pricing scoped after fit
+- [For agents](https://missionfinops.com/agents.md): Machine-readable summary

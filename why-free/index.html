@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Provider Invoice | Mission FinOps</title>
+<meta name="description" content="Why Kulshan is free. A parody invoice explaining what AWS billing tools usually cost vs. what we charge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: #0d0d0d;
+  color: #d4d4d4;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.back { color: #b794f6; text-decoration: underline; text-underline-offset: 3px; font-size: 0.8rem; margin-bottom: 2rem; }
+.back:hover { color: #c4b5fd; }
+.invoice {
+  background: #fff;
+  color: #1a1a1a;
+  max-width: 640px;
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 16px 64px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+.inv-header {
+  background: #232f3e;
+  color: #fff;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.inv-header-logo { font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; }
+.inv-header-date { font-size: 0.75rem; color: #aaa; }
+.inv-meta {
+  background: #f5f5f5;
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  line-height: 2;
+  border-bottom: 1px solid #e0e0e0;
+  color: #555;
+}
+.inv-meta strong { color: #333; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+th {
+  background: #f0f0f0;
+  text-align: left;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #666;
+  border-bottom: 2px solid #ddd;
+}
+th:last-child { text-align: right; }
+td {
+  padding: 0.5rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+td:last-child { text-align: right; font-weight: 500; }
+.section-row td {
+  background: #232f3e;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.5rem;
+}
+.alt { background: #fafafa; }
+.red { color: #c41a1a; }
+.orange { color: #c45a00; }
+.green { color: #16a34a; font-weight: 600; }
+.mute { color: #999; }
+.total td {
+  background: #111;
+  color: #4af626;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+}
+.inv-footer {
+  padding: 1rem 1.5rem;
+  background: #fafafa;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.7rem;
+  color: #888;
+  line-height: 1.7;
+}
+.page-footer {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: #555;
+  text-align: center;
+  line-height: 1.8;
+}
+.page-footer a { color: #b794f6; text-decoration: underline; }
+@media (max-width: 600px) {
+  body { padding: 1rem; }
+  .inv-header { flex-direction: column; gap: 0.25rem; align-items: flex-start; }
+  td, th { padding: 0.4rem 1rem; font-size: 0.7rem; }
+}
+</style>
+</head>
+<body>
+
+<a href="/" class="back">← back to missionfinops.com</a>
+
+<div class="invoice">
+
+<div class="inv-header">
+<span class="inv-header-logo">☁ Cloud Provider Invoice</span>
+<span class="inv-header-date">Statement Date: Every Month, Forever</span>
+</div>
+
+<div class="inv-meta">
+<strong>Account:</strong> xxxx-xxxx-xxxx<br>
+<strong>Account Name:</strong> Your AWS Account<br>
+<strong>Payment Status:</strong> <span style="color:#c41a1a;">CONFUSING</span><br>
+<strong>Support Plan:</strong> You're on your own
+</div>
+
+<table>
+<thead><tr><th>Description</th><th>Amount</th></tr></thead>
+<tbody>
+
+<tr class="section-row"><td colspan="2">CHARGES: Understanding Your Bill</td></tr>
+<tr><td>Line items nobody named clearly</td><td class="orange">47 pages</td></tr>
+<tr class="alt"><td>Time decoding the bill each month</td><td class="orange">4 hours</td></tr>
+<tr><td>Platform that claims to explain it</td><td class="red">$50,000/yr</td></tr>
+<tr class="alt"><td>Your billing data they require</td><td class="red">all of it</td></tr>
+<tr><td>Time to first insight</td><td class="orange">3 months</td></tr>
+<tr class="alt"><td>Sales call to get started</td><td class="orange">required</td></tr>
+
+<tr class="section-row"><td colspan="2">CREDITS APPLIED: $ Kulshan report</td></tr>
+<tr><td>Cost</td><td class="green">$0</td></tr>
+<tr class="alt"><td>Data shared</td><td class="green">none</td></tr>
+<tr><td>Time to first report</td><td class="green">3 minutes</td></tr>
+<tr class="alt"><td>Runs on</td><td class="green">your laptop</td></tr>
+<tr><td>License</td><td class="green">Apache 2.0 open source</td></tr>
+<tr class="alt"><td>Writes to your account</td><td class="green">nothing</td></tr>
+
+</tbody>
+<tfoot>
+<tr class="total"><td>TOTAL DUE</td><td>$0.00</td></tr>
+</tfoot>
+</table>
+
+<div class="inv-footer">
+Built by an ex-AWS architect (6+ years inside). Free tool. Free report review.<br>
+Paid help only if you want it. <a href="mailto:hello@missionfinops.com" style="color:#b794f6;">hello@missionfinops.com</a>
+</div>
+
+</div>
+
+<div class="page-footer">
+<a href="/">← back to missionfinops.com</a><br>
+Mission FinOps. Mission, BC, Canada.
+</div>
+
+</body>
+</html>

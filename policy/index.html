@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IAM policy: Kulshan</title>
+  <meta name="description" content="The read-only IAM policy Kulshan runs with. 147 actions across 30 AWS services, all Get, List, or Describe. SHA-attested, downloadable, reusable under CC BY 4.0.">
+  <meta name="theme-color" content="#16131e">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://missionfinops.com/policy/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="IAM policy Â· Kulshan">
+  <meta property="og:description" content="147 read-only actions across 30 AWS services.">
+  <meta property="og:url" content="https://missionfinops.com/policy/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="IAM policy Â· Kulshan">
+  <meta name="twitter:description" content="147 read-only actions. SHA256-attested. CC BY 4.0.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%2316131e'/><text x='16' y='22' text-anchor='middle' font-family='monospace' font-size='13' font-weight='700' fill='%23b794f6'>MF</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+:root{--bg:#16131e;--bg-2:#1c1828;--bg-deep:#0f0d16;--bg-code:rgba(183,148,246,0.05);--text:#ece9e1;--text-dim:#a39ab4;--text-mute:#6f6884;--purple:#b794f6;--purple-h:#c9aef9;--purple-soft:rgba(183,148,246,0.10);--orange:#e8864a;--green:#6dd4a0;--red:#e85a5a;--border:rgba(255,231,200,0.06);--border-vis:rgba(255,231,200,0.14);--border-purple:rgba(183,148,246,0.30);--f-sans:'General Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--f-mono:'JetBrains Mono','SF Mono',Consolas,monospace;--f-serif:'Instrument Serif',Georgia,serif;--maxw:960px;--maxwn:1180px;--maxwx:1320px;--ease:cubic-bezier(0.16,1,0.3,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--f-sans);font-weight:400;font-size:16px;line-height:1.65;color:var(--text);background:var(--bg);overflow-x:hidden;position:relative}
+a{color:var(--purple);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s,color 0.2s;word-break:break-word}
+a:hover{border-bottom-color:var(--purple);color:var(--purple-h)}
+ul,ol{list-style:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--purple-soft);color:var(--text)}
+:focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.75rem}
+.wrap-n{max-width:var(--maxwn);margin:0 auto;padding:0 1.75rem}
+.wrap-x{max-width:var(--maxwx);margin:0 auto;padding:0 1.75rem}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:1.1rem 0;background:rgba(15,13,22,0.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--maxwx);margin:0 auto;padding:0 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-brand{font-family:var(--f-mono);font-size:0.78rem;color:var(--text-dim);font-weight:500;border:none;white-space:nowrap;word-break:normal}
+.nav-brand:hover{border:none;color:var(--text)}
+.nav-brand .em{color:var(--purple)}
+.nav-links{display:flex;gap:2rem;font-family:var(--f-sans);font-size:0.88rem;font-weight:500}
+.nav-links a{color:var(--text-dim);border-bottom:none;transition:color 0.2s;word-break:normal}
+.nav-links a:hover{color:var(--text);border-bottom:none}
+.nav-links a[aria-current="page"]{color:var(--purple)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;padding:6px}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--text)}
+.nav-mobile{display:none;flex-direction:column;gap:1rem;padding:1.25rem 1.75rem;background:rgba(15,13,22,0.97);border-bottom:1px solid var(--border);font-family:var(--f-sans);font-size:0.95rem}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:var(--text-dim);border:none}
+@media (max-width:820px){.nav-links{display:none}.nav-toggle{display:flex}}
+
+.eyebrow{font-family:var(--f-mono);font-size:0.75rem;letter-spacing:0.02em;color:var(--text-mute);margin-bottom:1.5rem}
+h1,h2,h3{font-family:var(--f-sans);font-weight:600;letter-spacing:-0.025em;color:var(--text)}
+h1{font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.04;letter-spacing:-0.035em;font-weight:700;max-width:24ch}
+h2{font-size:clamp(1.65rem,3vw,2.2rem);line-height:1.15;letter-spacing:-0.02em;max-width:32ch;margin-bottom:1.25rem}
+.lede{font-size:1.05rem;color:var(--text-dim);max-width:64ch;line-height:1.65;margin-bottom:1.5rem}
+code{font-family:var(--f-mono);font-size:0.85em;background:rgba(255,231,200,0.04);padding:0.1em 0.35em;border-radius:3px;color:var(--text)}
+
+.hero{padding:9rem 0 3rem}
+.section{padding:4rem 0}
+
+.kv{margin-top:1.25rem}
+.kv-row{display:grid;grid-template-columns:11rem 1fr;gap:1.5rem;padding:0.85rem 0;border-top:1px solid var(--border);align-items:baseline}
+.kv-row:last-child{border-bottom:1px solid var(--border)}
+.kv-key{font-family:var(--f-mono);font-size:0.78rem;color:var(--purple);padding-top:0.1rem}
+.kv-val{color:var(--text);font-size:0.95rem;line-height:1.65;word-break:break-word}
+.kv-val .mono{font-family:var(--f-mono);font-size:0.82rem;color:var(--green);word-break:break-all}
+@media (max-width:640px){.kv-row{grid-template-columns:1fr;gap:0.4rem}}
+
+.cat-list{margin-top:1.25rem}
+.cat-row{display:grid;grid-template-columns:11rem 1fr;gap:1.5rem;padding:1rem 0;border-top:1px solid var(--border);align-items:baseline}
+.cat-row:last-child{border-bottom:1px solid var(--border)}
+.cat-key{font-family:var(--f-mono);font-size:0.78rem;color:var(--purple);font-weight:500}
+.cat-desc{color:var(--text);font-size:0.95rem;line-height:1.65}
+.cat-desc .mono{font-family:var(--f-mono);font-size:0.82em;color:var(--orange)}
+@media (max-width:640px){.cat-row{grid-template-columns:1fr;gap:0.4rem}}
+
+.deny-list{margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.25rem}
+.deny-list ul{list-style:none;padding:0;margin:0}
+.deny-list li{font-size:0.95rem;line-height:1.7;color:var(--text);padding-left:1.5rem;position:relative;margin-bottom:0.65rem}
+.deny-list li:last-child{margin-bottom:0}
+.deny-list li::before{content:'Ã - ';color:var(--red);font-family:var(--f-mono);position:absolute;left:0.1rem;top:0;font-weight:600}
+.deny-list code{font-size:0.85em;border:1px solid var(--border);background:var(--bg-code);padding:0.1em 0.35em;color:var(--orange);border-radius:2px}
+
+.cmd-block{display:block;background:var(--bg-2);border:1px solid var(--border);border-radius:3px;padding:0.85rem 1.1rem;font-family:var(--f-mono);font-size:0.82rem;line-height:1.7;color:var(--text);overflow-x:auto;white-space:pre;margin-top:1rem}
+.cmd-block .prompt{color:var(--purple)}
+.cmd-block .out{color:var(--green)}
+
+.pack-table{margin-top:1.25rem;border-top:1px solid var(--border)}
+.pack-row{display:grid;grid-template-columns:7rem 5rem 5rem 1fr;gap:1rem;padding:0.65rem 0;border-bottom:1px solid var(--border);align-items:baseline;font-size:0.92rem}
+.pack-row.pack-head{font-family:var(--f-mono);font-size:0.7rem;color:var(--text-mute);letter-spacing:0.06em;text-transform:uppercase;padding:0.5rem 0}
+.pack-row .name{font-family:var(--f-mono);color:var(--purple);font-weight:500}
+.pack-row .num{color:var(--text);text-align:right;font-family:var(--f-mono);font-size:0.85rem}
+.pack-row .lnk a{color:var(--text-dim);font-size:0.88rem}
+.pack-row .lnk a:hover{color:var(--purple)}
+@media (max-width:640px){.pack-row{grid-template-columns:5rem 1fr;gap:0.4rem}.pack-row .num{text-align:left;font-size:0.8rem}.pack-row .lnk{grid-column:1/-1}.pack-row.pack-head .num,.pack-row.pack-head .lnk{display:none}}
+
+.license-note{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);font-family:var(--f-sans)}
+.license-note p{color:var(--text-dim);max-width:62ch;font-size:0.95rem;line-height:1.7}
+.license-note p+p{margin-top:0.85rem}
+.license-note p strong{color:var(--text);font-weight:600}
+
+.footer{border-top:1px solid var(--border);padding:4rem 0 3rem;margin-top:6rem;background:var(--bg-deep)}
+.footer-grid{max-width:var(--maxwx);margin:0 auto;padding:0 1.75rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:3rem}
+@media (max-width:760px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.footer-grid{grid-template-columns:1fr}}
+.footer-brand{font-family:var(--f-sans);font-weight:600;font-size:0.92rem;color:var(--text);letter-spacing:-0.01em;margin-bottom:0.5rem}
+.footer-tag{font-family:var(--f-sans);font-size:0.85rem;color:var(--text-dim);line-height:1.55;max-width:30ch}
+.footer-tag .em{color:var(--purple)}
+.footer-col-title{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-mute);margin-bottom:1rem}
+.footer-col ul{display:flex;flex-direction:column;gap:0.55rem}
+.footer-col a{font-family:var(--f-sans);font-size:0.9rem;color:var(--text-dim);border:none}
+.footer-col a:hover{color:var(--text);border:none}
+.footer-bar{max-width:var(--maxwx);margin:0 auto;padding:1.5rem 1.75rem 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-family:var(--f-mono);font-size:0.74rem;color:var(--text-mute);letter-spacing:0.02em}
+.footer-bar a{color:var(--text-dim);border:none}
+.footer-bar a:hover{color:var(--text);border:none}
+.footer-bar .ok{color:var(--green)}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand"><span class="em">Kulshan</span> Â· Mission FinOps</a>
+    <div class="nav-links">
+      <a href="/sample/">Sample</a>
+      <a href="/policy/" aria-current="page">IAM Policy</a>
+      <a href="/changelog/">Changelog</a>
+      <a href="/about/">About</a>
+      <a href="/work-with-me/">Work with me</a>
+      <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+    <a href="/sample/">Sample</a>
+    <a href="/policy/" aria-current="page">IAM Policy</a>
+    <a href="/changelog/">Changelog</a>
+    <a href="/about/">About</a>
+    <a href="/work-with-me/">Work with me</a>
+    <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap-n">
+    <p class="eyebrow">The IAM policy</p>
+    <h1>The IAM policy Kulshan runs with.</h1>
+    <p class="lede">Every action in this policy is a Get, List, or Describe. There is no Put, Create, Update, Modify, or Delete because the source code does not call any. Verify the hash. Read the plain-language allow list. Decide if you trust it.</p>
+
+    <div class="kv" aria-label="Policy verification facts">
+      <div class="kv-row"><div class="kv-key">version</div><div class="kv-val">0.1.0 (Kulshan v0.1.0, released 2026-04-21)</div></div>
+      <div class="kv-row"><div class="kv-key">total actions</div><div class="kv-val">147</div></div>
+      <div class="kv-row"><div class="kv-key">aws services</div><div class="kv-val">30</div></div>
+      <div class="kv-row"><div class="kv-key">sha256</div><div class="kv-val"><span class="mono">fc059ba43f926f056dbe61ea5ab689c7c22002e9a07fd23048537759d6503daa</span></div></div>
+      <div class="kv-row"><div class="kv-key">file</div><div class="kv-val"><a href="/kulshan/iam/kulshan-readonly.json" download>Kulshan-readonly.json</a> (composed policy, 6.7 KB)</div></div>
+      <div class="kv-row"><div class="kv-key">source</div><div class="kv-val">Generated from per-pack policies in <code>Kulshan/iam/per-check/</code>. Composed at release time, attested by hash.</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap-n">
+    <h2>What the policy allows.</h2>
+    <p class="lede">Plain-language summary. Every line below maps to read-only AWS APIs. The full action list is in the JSON file above.</p>
+
+    <div class="cat-list">
+      <div class="cat-row"><div class="cat-key">spend</div><div class="cat-desc">Cost Explorer queries (cost and usage, anomaly history, RI/SP coverage and recommendations, forecast). Aggregate cost data only. <span class="mono">ce:Get*</span></div></div>
+      <div class="cat-row"><div class="cat-key">compute</div><div class="cat-desc">EC2 instances, EBS volumes and snapshots, security groups, route tables, NAT gateways, Auto Scaling groups, Lambda function configuration. <span class="mono">ec2:Describe*</span>, <span class="mono">autoscaling:Describe*</span>, <span class="mono">lambda:List*</span>, <span class="mono">lambda:GetFunction*</span></div></div>
+      <div class="cat-row"><div class="cat-key">containers</div><div class="cat-desc">ECS clusters and services, EKS clusters, ECR repositories, image scan findings. Configuration only.</div></div>
+      <div class="cat-row"><div class="cat-key">storage</div><div class="cat-desc">S3 bucket inventory, encryption, versioning, public-access settings, lifecycle policies, replication. Bucket configuration only, no object data.</div></div>
+      <div class="cat-row"><div class="cat-key">database</div><div class="cat-desc">RDS clusters and instances, parameter groups, snapshots, DynamoDB tables, ElastiCache clusters. Configuration only.</div></div>
+      <div class="cat-row"><div class="cat-key">network</div><div class="cat-desc">VPC topology, subnets, route tables, peering, transit gateways, ELB / ALB / NLB, Route 53 hosted zones. Configuration only.</div></div>
+      <div class="cat-row"><div class="cat-key">identity</div><div class="cat-desc">IAM users, roles, groups, policies (their configuration, not their secrets), Access Analyzer findings, organization structure, caller identity. <span class="mono">iam:Get*</span>, <span class="mono">iam:List*</span>, <span class="mono">access-analyzer:*</span>, <span class="mono">organizations:Describe*</span>, <span class="mono">sts:GetCallerIdentity</span></div></div>
+      <div class="cat-row"><div class="cat-key">audit log</div><div class="cat-desc">CloudTrail trail configuration and integrity validation status, AWS Config recorders and rules, X-Ray traces. Whether logging is on, not the log contents.</div></div>
+      <div class="cat-row"><div class="cat-key">monitoring</div><div class="cat-desc">CloudWatch metrics, alarms, dashboards, log-group existence and retention. Log-group names and retention, not the log lines.</div></div>
+      <div class="cat-row"><div class="cat-key">encryption</div><div class="cat-desc">KMS key configuration (rotation, policy, grants). No <code>Decrypt</code>. No <code>GenerateDataKey</code>. No cryptographic operations.</div></div>
+      <div class="cat-row"><div class="cat-key">backup</div><div class="cat-desc">AWS Backup vaults, plans, recovery points, protected resources. Configuration and inventory only.</div></div>
+      <div class="cat-row"><div class="cat-key">threat data</div><div class="cat-desc">GuardDuty detector configuration and findings.</div></div>
+      <div class="cat-row"><div class="cat-key">tags</div><div class="cat-desc">Resource Groups Tagging API queries to compute tag coverage and ownership gaps.</div></div>
+      <div class="cat-row"><div class="cat-key">capacity</div><div class="cat-desc">Service Quotas (current usage and limits), CloudFormation stack drift detection status.</div></div>
+      <div class="cat-row"><div class="cat-key">delivery</div><div class="cat-desc">SNS topic configuration. Used by the observability pack to map alarm-to-channel wiring.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap-n">
+    <h2>What it explicitly does NOT allow.</h2>
+    <p class="lede">Verbs the policy never grants. If you find a Kulshan code path that calls one of these, that is a bug, and it should be reported to <a href="mailto:security@missionfinops.com">security@missionfinops.com</a>.</p>
+
+    <div class="deny-list">
+      <ul>
+        <li>No <code>Put</code>, <code>Create</code>, <code>Update</code>, <code>Modify</code>, <code>Delete</code>, or <code>Terminate</code> on any service.</li>
+        <li>No <code>iam:CreateAccessKey</code>, <code>iam:UpdateLoginProfile</code>, <code>iam:CreateUser</code>, or any IAM mutation.</li>
+        <li>No <code>sts:AssumeRole</code> in the policy itself. Kulshan uses your existing credential chain; assuming a role is your decision, not the policy's.</li>
+        <li>No <code>s3:GetObject</code>. The bucket configuration is readable; the bucket contents are not.</li>
+        <li>No <code>kms:Decrypt</code>, <code>kms:GenerateDataKey</code>, <code>kms:Encrypt</code>, or any cryptographic operation.</li>
+        <li>No <code>ec2:RunInstances</code>, <code>ec2:TerminateInstances</code>, <code>ec2:CreateTags</code>, or any compute-lifecycle action.</li>
+        <li>No <code>rds:Modify*</code>, <code>lambda:UpdateFunctionCode</code>, <code>secretsmanager:GetSecretValue</code>, or any other resource modification or secret access.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap-n">
+    <h2>Verify it yourself.</h2>
+    <p class="lede">Download the JSON, hash it locally, and compare to the SHA256 above. If the two match, the file you have is the file we ship.</p>
+
+    <code class="cmd-block"><span class="prompt">$</span> shasum -a 256 Kulshan-readonly.json
+<span class="out">fc059ba43f926f056dbe61ea5ab689c7c22002e9a07fd23048537759d6503daa  Kulshan-readonly.json</span></code>
+
+    <p class="lede" style="margin-top:1.25rem">If the hash does not match, something is wrong. Email <a href="mailto:security@missionfinops.com">security@missionfinops.com</a>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap-n">
+    <h2>Per-pack policies.</h2>
+    <p class="lede">Each pack ships its own minimum-viable policy. Attach only the packs you intend to run. Per-pack totals do not add up to 147 because some read-only actions are reused across multiple checks. The composed policy de-duplicates shared actions into 147 unique IAM actions.</p>
+
+    <div class="pack-table" role="table" aria-label="Per-pack IAM policies">
+      <div class="pack-row pack-head" role="row">
+        <div class="name" role="columnheader">Pack</div>
+        <div class="num" role="columnheader">Actions</div>
+        <div class="num" role="columnheader">Services</div>
+        <div class="lnk" role="columnheader">Download</div>
+      </div>
+      <div class="pack-row" role="row"><div class="name" role="cell">age</div><div class="num" role="cell">16</div><div class="num" role="cell">7</div><div class="lnk" role="cell"><a href="/kulshan/iam/per-check/age.json" download>age.json</a></div></div>
+      <div class="pack-row" role="row"><div class="name" role="cell">cost</div><div class="num" role="cell">13</div><div class="num" role="cell">2</div><div class="lnk" role="cell"><a href="/kulshan/iam/per-check/cost.json" download>cost.json</a></div></div>
+      <div class="pack-row" role="row"><div class="name" role="cell">dr</div><div class="num" role="cell">29</div><div class="num" role="cell">10</div><div class="lnk" role="cell"><a href="/kulshan/iam/per-check/dr.json" download>dr.json</a></div></div>
+      <div class="pack-row" role="row"><div class="name" role="cell">drift</div><div class="num" role="cell">12</div><div class="num" role="cell">6</div><div class="lnk" role="cell"><a href="/kulshan/iam/per-check/drift.json" download>drift.json</a></div></div>
+      <div class="pack-row" role="row"><div class="name" role="cell">limit</div><div class="num" role="cell">19</div><div class="num" role="cell">10</div><div class="lnk" role="cell"><a href="/kulshan/iam/per-check/limit.json" download>limit.json</a></div></div>
+      <div class="pack-row" role="row"><div class="name" role="cell">pulse</div><div class="num" role="cell">23</div><div class="num" role="cell">14</div><div class="lnk" role="cell"><a href="/kulshan/iam/per-check/pulse.json" download>pulse.json</a></div></div>
+      <div class="pack-row" role="row"><div class="name" role="cell">security</div><div class="num" role="cell">72</div><div class="num" role="cell">13</div><div class="lnk" role="cell"><a href="/kulshan/iam/per-check/security.json" download>security.json</a></div></div>
+      <div class="pack-row" role="row"><div class="name" role="cell">sweep</div><div class="num" role="cell">24</div><div class="num" role="cell">9</div><div class="lnk" role="cell"><a href="/kulshan/iam/per-check/sweep.json" download>sweep.json</a></div></div>
+      <div class="pack-row" role="row"><div class="name" role="cell">tag</div><div class="num" role="cell">33</div><div class="num" role="cell">11</div><div class="lnk" role="cell"><a href="/kulshan/iam/per-check/tag.json" download>tag.json</a></div></div>
+      <div class="pack-row" role="row"><div class="name" role="cell">topo</div><div class="num" role="cell">14</div><div class="num" role="cell">2</div><div class="lnk" role="cell"><a href="/kulshan/iam/per-check/topo.json" download>topo.json</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap-n">
+    <div class="license-note">
+      <p class="eyebrow">Reuse</p>
+      <p><strong>Reuse freely under CC BY 4.0. Credit: Mission FinOps, missionfinops.com.</strong></p>
+      <p>This applies to the policy file (<code>kulshan-readonly.json</code> and the per-pack files in <code>kulshan/iam/per-check/</code>) only. The CC BY 4.0 license on the policy file is in addition to the Apache 2.0 license that covers the rest of the Kulshan codebase.</p>
+      <p>If your team or tool adopts this policy as a baseline, no permission needed. A link back is appreciated, not required.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Mission FinOps</div>
+      <div class="footer-tag">Read-only AWS audit, run on your laptop. Built in Mission, BC. <span class="em">*</span> with unicorn flair.</div>
+    </div>
+    <div class="footer-col"><div class="footer-col-title">Kulshan</div><ul><li><a href="/sample/">Sample report</a></li><li><a href="/policy/">IAM policy</a></li><li><a href="/changelog/">Changelog</a></li></ul></div>
+    <div class="footer-col"><div class="footer-col-title">Verticals</div><ul><li><a href="/healthtech/">Healthtech</a></li><li><a href="/msp/">MSPs &amp; consultancies</a></li><li><a href="/work-with-me/">Work with me</a></li></ul></div>
+    <div class="footer-col"><div class="footer-col-title">More</div><ul><li><a href="/about/">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="/podcast/">Podcast</a></li><li><a href="mailto:hello@missionfinops.com">hello@missionfinops.com</a></li></ul></div>
+  </div>
+  <div class="footer-bar">
+    <div>MISSION FINOPS &nbsp;Â·&nbsp; Mission, BC</div>
+ <div><a href="mailto:security@missionfinops.com">security@missionfinops.com</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){'use strict';var t=document.getElementById('nav-toggle'),m=document.getElementById('nav-mobile');t.addEventListener('click',function(){var o=m.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');m.setAttribute('aria-hidden',o?'false':'true')});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');t.setAttribute('aria-expanded','false');m.setAttribute('aria-hidden','true')})})}());
+</script>
+</body>
+</html>
