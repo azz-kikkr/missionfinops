@@ -35,7 +35,7 @@ cost_report_*
 .cost-analyzer-scores.json
 scan-output/
 audit-output/
-reckoner-runs/
+kulshan-runs/
 
 # --- Internal source dumps (drift hazard) ---
 FULL_SOURCE_REFERENCE.txt

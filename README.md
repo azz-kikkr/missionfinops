@@ -1,63 +1,103 @@
-# Mission FinOps
+# Kulshan
 
-**One command. Read-only AWS access. Local report. No data egress.**
+**The blood test for your AWS bill.**
 
-Mission FinOps is an AWS audit advisory practice. Reckoner is its product: a local-first, read-only CLI that audits your AWS account across ten operational dimensions and produces a scored report — without sending any data off your machine.
+Open-source, local-first AWS FinOps audit CLI. One command, one report. No SaaS. No telemetry.
 
-## Install
+## What is Kulshan
 
-```bash
-git clone <repo>
-cd mission-finops
-bash setup.sh
+Kulshan is a read-only CLI that audits your AWS account and produces a scored report. It runs locally with the AWS credentials you already use. Nothing leaves your machine.
+
+- Local-first execution
+- Read-only IAM policy (Get, List, Describe only)
+- Terminal, JSON, and HTML output
+- Scored findings with prioritized next actions
+- Works for humans and AI agents
+
+## Why local-first
+
+Your AWS credentials stay on your machine. Your billing data stays on your machine. The report stays on your machine.
+
+No CUR upload. No cross-account role for a vendor. No onboarding. No telemetry.
+
+Run the audit. Read the report. Decide what to do next.
+
+## What Kulshan finds
+
+- Cost drivers by service, account, and region
+- Spend changes and anomalies
+- Tagging and ownership gaps
+- Idle or orphaned resources
+- Savings Plan and RI coverage signals
+- Top actions for humans and agents
+
+## Example findings
+
+```
+Cost Drivers:
+  Amazon EC2         $14,200/mo  +12%
+  Amazon RDS          $4,800/mo  stable
+  AWS Lambda          $1,200/mo  +340% anomaly
+
+Commitments:
+  RI/SP coverage: 62% (target: 80%)
+  Utilization: 94%
+
+Top Actions:
+  1. Investigate Lambda spike
+  2. Increase SP coverage
+  3. Rightsize 2 RDS instances
 ```
 
-## Quickstart
+## Outputs
 
-```bash
-reckoner report --quick
-```
+- **Terminal** - default, readable summary with scores
+- **JSON** - structured findings for automation and agents
+- **HTML** - shareable report for stakeholders
 
-Produces a scored report covering cost, security, waste, DR readiness, lifecycle, drift, tagging, observability, quotas, and network topology. Output formats: terminal (default), JSON (`--format json`), HTML (`--format html`).
+## Humans and AI agents
 
-## What Reckoner Is
+Kulshan produces structured output that both humans and AI agents can consume.
 
-- Read-only AWS audit CLI (ten check packs in one run)
-- Local execution — nothing leaves your machine
-- Published IAM policy: 147 read-only actions, SHA256-attested
-- Terminal, JSON, and HTML report output
-- Scored 0-100 with letter grade per audit dimension
-- Exit codes for CI/CD: 0 = clean, 1 = critical findings
+- Engineers get a scored HTML report with clear next actions
+- AI agents get JSON output through local MCP or direct invocation
+- CI/CD pipelines get exit codes (0 = clean, 1 = critical findings)
 
-## What Reckoner Is Not
+## Read-only IAM model
 
-- Not a platform, not a dashboard, not a SaaS
-- Not multi-cloud (AWS only)
-- Not autonomous (read-only — audits and reports, does not modify)
-- Not an AI agent (local SLM narration is on the roadmap, not shipped)
+The IAM policy is published at [`kulshan/iam/kulshan-readonly.json`](kulshan/iam/kulshan-readonly.json) and on the website at [missionfinops.com/policy/](https://missionfinops.com/policy/).
 
-## IAM Policy
+147 actions across 30 AWS services. All Get, List, or Describe. No Put, Create, Update, or Delete. SHA256-attested. Downloadable. Reusable under CC BY 4.0.
 
-The read-only IAM policy is published at [`reckoner/iam/reckoner-readonly.json`](reckoner/iam/reckoner-readonly.json) and on the website at [missionfinops.com/policy/](https://missionfinops.com/policy/).
+## No telemetry
 
-147 actions across 30 AWS services. All Get, List, or Describe. No Put, Create, Update, or Delete.
+Kulshan does not phone home. No analytics. No crash reports. No usage tracking. No network calls except to the AWS APIs you point it at.
 
-## Sample Report
+## Sample report
 
-A synthetic-data sample report is available at [`samples/sample-report.html`](samples/sample-report.html) and on the website at [missionfinops.com/sample/](https://missionfinops.com/sample/).
+A sample report rendered against synthetic fixture data is available at [missionfinops.com/sample/](https://missionfinops.com/sample/).
 
-## Documentation
+## MissionFinOps Agent - Private Preview
 
-- [Reckoner README](reckoner/README.md) — detailed feature list, CLI reference, architecture
-- [Changelog](https://missionfinops.com/changelog/) — release timeline
-- [IAM Policy](https://missionfinops.com/policy/) — full policy with verification instructions
+Kulshan is the audit. MissionFinOps Agent is the workflow on top.
+
+The agent builds on the Kulshan evidence baseline to help teams prepare cost review notes, track exceptions, and identify next actions. It is currently in private preview.
+
+Interested? hello@missionfinops.com
+
+## Links
+
+- Website: [missionfinops.com](https://missionfinops.com)
+- Sample report: [missionfinops.com/sample/](https://missionfinops.com/sample/)
+- IAM policy: [missionfinops.com/policy/](https://missionfinops.com/policy/)
+- Changelog: [missionfinops.com/changelog/](https://missionfinops.com/changelog/)
+- GitHub: [github.com/azz-kikkr/kulshan](https://github.com/azz-kikkr/kulshan)
 
 ## License
 
-Kulshan is Apache 2.0 — free and open source. The IAM policy file is additionally offered under CC BY 4.0.
+Kulshan is Apache 2.0. Free and open source. The IAM policy file is additionally offered under CC BY 4.0.
 
 ## Contact
 
 - General: hello@missionfinops.com
 - Security: security@missionfinops.com
-- Web: https://missionfinops.com
