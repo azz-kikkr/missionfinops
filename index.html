@@ -145,10 +145,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 }
 @media(min-width:769px){
   .wrap{padding:0 1.75rem}
-  .hero{padding:8rem 0 3.5rem}
-  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-  .hero-badges-full,.hero-cmd,.hero-right{display:block}
-  .hero-trust-mini{display:none}
+  .hero{padding:8rem 0 4rem}
   .ctas{flex-direction:row}
   .btn{min-width:auto}
   .footer-inner{flex-direction:row;justify-content:space-between;align-items:flex-start}
@@ -199,53 +196,37 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-left">
-          <h1>The <span class="a">blood test</span> for your AWS bill.</h1>
-          <p class="hero-sub">One command. One local report. No CUR. No Athena. No SaaS.</p>
-          <p class="hero-trust-mini" style="font-family:var(--f-mono);font-size:0.8rem;color:var(--green);margin-bottom:1.25rem">Open source. Read-only. No telemetry.</p>
-          <div class="hero-badges-full">
-            <div class="badges">
-              <span class="badge">Open source</span>
-              <span class="badge">Read-only</span>
-              <span class="badge">No telemetry</span>
-              <span class="badge">Apache 2.0</span>
-            </div>
-          </div>
-          <div class="ctas">
-            <a href="/sample/" class="btn btn-primary">View Sample Report</a>
-            <a href="https://pypi.org/project/kulshan/" class="btn btn-ghost">Install Kulshan</a>
-            <a href="https://github.com/azz-kikkr/kulshan" class="btn btn-tertiary">GitHub</a>
-          </div>
-          <div class="hero-cmd">
-            <div class="cmd-block">
-              <span class="pr">$</span> <span class="cm">pip install kulshan</span><br>
-              <span class="pr">$</span> <span class="cm">kulshan report --format html</span>
-            </div>
-            <p class="cmd-note">Works with the AWS credentials you already use. Typical scan: a few minutes.</p>
-          </div>
-        </div>
-        <div class="hero-right">
-          <div class="report-frame">
-            <div class="report-bar"><div class="report-dot"></div><div class="report-dot"></div><div class="report-dot"></div></div>
-            <div class="report-body">
-              <span class="m">Kulshan FinOps Baseline</span><br><br>
-              <span class="m">Cost Drivers:</span><br>
-              <span class="g">&nbsp; Amazon EC2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $14,200/mo</span> <span class="w">+12%</span><br>
-              <span class="g">&nbsp; Amazon RDS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $4,800/mo</span> <span class="m">stable</span><br>
-              <span class="p">&nbsp; AWS Lambda&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1,200/mo</span> <span class="w">+340% anomaly</span><br><br>
-              <span class="m">Commitments:</span><br>
-              <span class="w">&nbsp; RI/SP coverage: 62%</span> <span class="m">(target: 80%)</span><br>
-              <span class="g">&nbsp; Utilization: 94%</span><br><br>
-              <span class="m">Top Actions:</span><br>
-              <span class="p">1.</span> Investigate Lambda spike<br>
-              <span class="p">2.</span> Increase SP coverage<br>
-              <span class="p">3.</span> Rightsize 2 RDS instances
-            </div>
-          </div>
-        </div>
+    <div class="wrap" style="max-width:680px">
+      <h1>The <span class="a">blood test</span> for your AWS bill.</h1>
+      <p class="hero-sub">Generate a VP/CFO-ready AWS cost report in minutes.</p>
+      <p style="font-family:var(--f-mono);font-size:0.8rem;color:var(--text-dim);margin-bottom:1.5rem">No CUR. No Athena. No SaaS.</p>
+      <div class="cmd-block">
+        <span class="m">1. Install</span><br>
+        <span class="pr">$</span> <span class="cm">pip install kulshan</span><br><br>
+        <span class="m">2. Authenticate</span><br>
+        <span class="pr">$</span> <span class="cm">aws sso login</span><br><br>
+        <span class="m">3. Generate Report</span><br>
+        <span class="pr">$</span> <span class="cm">kulshan report</span>
       </div>
+      <p class="cmd-note" style="margin-bottom:1.5rem">Generates HTML and JSON reports locally using your existing AWS credentials.</p>
+      <div class="ctas">
+        <a href="/sample/" class="btn btn-primary">View Sample Report</a>
+        <a href="https://pypi.org/project/kulshan/" class="btn btn-ghost">Install Kulshan</a>
+        <a href="https://github.com/azz-kikkr/kulshan" class="btn btn-tertiary">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATION -->
+<section class="section" style="padding:2.5rem 0">
+  <div class="wrap" style="text-align:center">
+    <div style="display:inline-flex;flex-direction:column;align-items:center;gap:0.5rem;font-family:var(--f-mono);font-size:0.85rem">
+      <span style="color:var(--text);font-weight:500">Your AWS Account</span>
+      <span style="color:var(--text-mute);font-size:1.2rem">&darr;</span>
+      <span style="color:var(--accent);font-weight:600">Kulshan</span>
+      <span style="color:var(--text-mute);font-size:1.2rem">&darr;</span>
+      <span style="color:var(--green);font-weight:500">VP/CFO-ready Cost Report</span>
     </div>
   </div>
 </section>
@@ -276,6 +257,31 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
       <div class="audience-item"><span class="dot">&#9679;</span> Platform teams before buying a FinOps platform</div>
       <div class="audience-item"><span class="dot">&#9679;</span> Engineering leaders investigating cloud spend</div>
       <div class="audience-item"><span class="dot">&#9679;</span> AI agents that need evidence before recommendations</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY I BUILT KULSHAN -->
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Why I built Kulshan</h2>
+    <p class="why-copy">Over six years working with AWS customers. Hundreds of AWS environments. The same pattern kept showing up.</p>
+    <p class="why-copy"><strong>Teams discuss solutions before understanding the baseline.</strong></p>
+    <p class="why-copy">They buy platforms before understanding the problem. They open Jira storms before knowing which accounts, services, or regions actually matter.</p>
+    <p class="why-copy">Kulshan began as the audit I kept performing manually. Cost Explorer, then cross-referencing, then documenting findings, then summarizing for the customer. Over time it became a CLI.</p>
+    <p class="why-copy">Run one command. Get one report. Start from facts.</p>
+    <p class="why-copy">Then decide whether you need Athena, Cost Intelligence Dashboards, CloudZero, Vantage, consultants, or nothing at all.</p>
+    <p style="font-family:var(--f-mono);font-size:0.85rem;color:var(--accent);font-weight:500;margin-top:1rem">The audit before the platform.</p>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="section">
+  <div class="wrap">
+    <div class="founder-text">
+      <p><strong>Yuvdeep Singh.</strong> Over six years working with AWS customers. Hundreds of AWS environments. The repeated pattern: teams discussing solutions before understanding the baseline.</p>
+      <p style="margin-top:0.75rem">Kulshan started as a manual workflow. Eventually it became a CLI. Now it is open source.</p>
+      <p class="founder-tag">MissionFinOps. Mission, British Columbia. Local-first. Read-only. No telemetry.</p>
     </div>
   </div>
 </section>
@@ -321,31 +327,6 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <div class="dflow-footer">
       <span class="dflow-fl good">&rarr; Kulshan: Everything stays local. You control the data.</span>
       <span class="dflow-fl bad">SaaS tools can be powerful, but they usually require external data sharing and onboarding.</span>
-    </div>
-  </div>
-</section>
-
-<!-- WHY I BUILT KULSHAN -->
-<section class="section">
-  <div class="wrap">
-    <h2 class="section-title">Why I built Kulshan</h2>
-    <p class="why-copy">Over six years working with AWS customers. Hundreds of AWS environments. The same pattern kept showing up.</p>
-    <p class="why-copy"><strong>Teams discuss solutions before understanding the baseline.</strong></p>
-    <p class="why-copy">They buy platforms before understanding the problem. They open Jira storms before knowing which accounts, services, or regions actually matter.</p>
-    <p class="why-copy">Kulshan began as the audit I kept performing manually. Cost Explorer, then cross-referencing, then documenting findings, then summarizing for the customer. Over time it became a CLI.</p>
-    <p class="why-copy">Run one command. Get one report. Start from facts.</p>
-    <p class="why-copy">Then decide whether you need Athena, Cost Intelligence Dashboards, CloudZero, Vantage, consultants, or nothing at all.</p>
-    <p style="font-family:var(--f-mono);font-size:0.85rem;color:var(--accent);font-weight:500;margin-top:1rem">The audit before the platform.</p>
-  </div>
-</section>
-
-<!-- FOUNDER -->
-<section class="section">
-  <div class="wrap">
-    <div class="founder-text">
-      <p><strong>Yuvdeep Singh.</strong> Over six years working with AWS customers. Hundreds of AWS environments. The repeated pattern: teams discussing solutions before understanding the baseline.</p>
-      <p style="margin-top:0.75rem">Kulshan started as a manual workflow. Eventually it became a CLI. Now it is open source.</p>
-      <p class="founder-tag">MissionFinOps. Mission, British Columbia. Local-first. Read-only. No telemetry.</p>
     </div>
   </div>
 </section>
