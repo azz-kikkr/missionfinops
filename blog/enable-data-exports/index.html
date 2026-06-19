@@ -70,7 +70,10 @@ code{font-family:var(--f-mono);font-size:0.86em;background:rgba(255,231,200,0.04
 .guide-body li{margin-bottom:0.6rem;line-height:1.75;font-size:1.02rem}
 .guide-body strong{color:var(--purple);font-weight:600}
 
-.step-img{max-width:100%;border:1px solid var(--border-vis);border-radius:8px;margin:1rem 0 1.25rem;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.series-note{color:var(--text-dim);font-size:0.98rem;margin-top:-0.35rem}
+.step-figure{margin:2.5rem 0 2rem}
+.step-img{display:block;width:100%;max-width:100%;border:1px solid var(--border-vis);border-radius:8px;box-shadow:0 18px 56px rgba(0,0,0,0.5)}
+.step-figure figcaption{margin-top:0.65rem;font-family:var(--f-mono);font-size:0.72rem;color:var(--text-mute);line-height:1.5}
 .img-placeholder{max-width:100%;border:2px dashed var(--border-purple);border-radius:8px;margin:1rem 0 1.25rem;padding:3rem 1.5rem;text-align:center;font-family:var(--f-mono);font-size:0.82rem;color:var(--text-mute);background:var(--bg-code)}
 
 .tip{background:var(--bg-code);border:1px solid var(--border-purple);border-radius:8px;padding:1rem 1.25rem;margin:1.5rem 0;max-width:64ch;font-size:0.95rem;color:var(--text-dim);line-height:1.7}
@@ -78,11 +81,6 @@ code{font-family:var(--f-mono);font-size:0.86em;background:rgba(255,231,200,0.04
 
 .warning{background:rgba(232,134,74,0.05);border:1px solid rgba(232,134,74,0.25);border-radius:8px;padding:1rem 1.25rem;margin:1.5rem 0;max-width:64ch;font-size:0.95rem;color:var(--text-dim);line-height:1.7}
 .warning strong{color:var(--orange)}
-
-.series-box{background:var(--bg-2);border:1px solid var(--border-vis);border-radius:10px;padding:1.5rem;margin:2rem 0;max-width:64ch}
-.series-box h3{font-family:var(--f-mono);font-size:0.82rem;color:var(--purple);margin-bottom:0.75rem;letter-spacing:0.02em}
-.series-box ol{margin-left:1.25rem;color:var(--text-dim);font-size:0.9rem;line-height:2}
-.series-box li.current{color:var(--text);font-weight:600}
 
 .post-back{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--f-sans);font-size:0.95rem;font-weight:500;color:var(--text-dim);margin-top:2rem;border:none;border-bottom:1px solid var(--border-vis);padding-bottom:2px;transition:color 0.2s,border-color 0.2s,gap 0.25s var(--ease)}
 .post-back::before{content:'\2190';color:var(--purple);font-family:var(--f-mono);transition:transform 0.25s var(--ease);display:inline-block}
@@ -138,19 +136,9 @@ code{font-family:var(--f-mono);font-size:0.86em;background:rgba(255,231,200,0.04
 
     <p>I've seen teams evaluate FinOps tools for months before enabling the billing export those tools eventually depend on.</p>
 
-    <div class="tip"><strong>Why now?</strong> Billing data becomes more valuable with age. Even if you have no immediate plans for Athena, chargeback, dashboards, or FinOps tooling, enabling Data Exports today means future investigations can look backward instead of starting from zero.</div>
+    <p class="series-note">This is the first guide in the AWS Cost Foundations series.</p>
 
-    <div class="series-box">
-      <h3>AWS Cost Foundations</h3>
-      <ol>
-        <li class="current">Enable Data Exports (this guide)</li>
-        <li>CUR 2.0 vs FOCUS</li>
-        <li>Query your billing data with Athena</li>
-        <li>Find your top 10 cost drivers</li>
-        <li>Build a FinOps baseline</li>
-        <li>Run Kulshan</li>
-      </ol>
-    </div>
+    <div class="tip"><strong>Why now?</strong> Turn this on today. Future-you will be glad the data exists.</div>
 
     <!-- ============================================================ -->
     <h2>Prerequisites</h2>
@@ -165,7 +153,10 @@ code{font-family:var(--f-mono);font-size:0.86em;background:rgba(255,231,200,0.04
     <!-- ============================================================ -->
     <h2>Step 1: Open Data Exports</h2>
 
-    <img src="../../assets/blog/enable-data-exports/step1-data-exports-landing.png" alt="AWS Data Exports landing page showing an empty exports table with a blue Create button" class="step-img" loading="lazy">
+    <figure class="step-figure">
+      <img src="../../assets/blog/enable-data-exports/step1-data-exports-landing.png" alt="AWS Data Exports landing page showing an empty exports table with a blue Create button" class="step-img" loading="lazy">
+      <figcaption>Figure 1. AWS Data Exports landing page</figcaption>
+    </figure>
 
     <ul>
       <li>Navigate to <strong>Billing & Cost Management</strong> &rarr; <strong>Data Exports</strong></li>
@@ -176,7 +167,10 @@ code{font-family:var(--f-mono);font-size:0.86em;background:rgba(255,231,200,0.04
     <!-- ============================================================ -->
     <h2>Step 2: Select Standard Data Export</h2>
 
-    <img src="../../assets/blog/enable-data-exports/step2-standard-export-cur20.png" alt="Create export page with Standard data export selected and CUR 2.0 chosen" class="step-img" loading="lazy">
+    <figure class="step-figure">
+      <img src="../../assets/blog/enable-data-exports/step2-standard-export-cur20.png" alt="Create export page with Standard data export selected and CUR 2.0 chosen" class="step-img" loading="lazy">
+      <figcaption>Figure 2. Standard Data Export with CUR 2.0 selected</figcaption>
+    </figure>
 
     <ul>
       <li>Select <strong>Standard data export</strong> (not QuickSight, not Legacy CUR)</li>
@@ -189,7 +183,10 @@ code{font-family:var(--f-mono);font-size:0.86em;background:rgba(255,231,200,0.04
     <!-- ============================================================ -->
     <h2>Step 3: Configure additional content</h2>
 
-    <img src="../../assets/blog/enable-data-exports/step3-additional-content.png" alt="Additional export content options with Include resource IDs and Split cost allocation data checked" class="step-img" loading="lazy">
+    <figure class="step-figure">
+      <img src="../../assets/blog/enable-data-exports/step3-additional-content.png" alt="Additional export content options with Include resource IDs and Split cost allocation data checked" class="step-img" loading="lazy">
+      <figcaption>Figure 3. Additional export content settings</figcaption>
+    </figure>
 
     <ul>
       <li>Check <strong>Include resource IDs</strong> — so you can trace costs to individual resources later</li>
@@ -202,7 +199,10 @@ code{font-family:var(--f-mono);font-size:0.86em;background:rgba(255,231,200,0.04
     <!-- ============================================================ -->
     <h2>Step 4: Configure time granularity</h2>
 
-    <img src="../../assets/blog/enable-data-exports/step4-granularity.png" alt="Time granularity section with Daily selected and all 131 columns included" class="step-img" loading="lazy">
+    <figure class="step-figure">
+      <img src="../../assets/blog/enable-data-exports/step4-granularity.png" alt="Time granularity section with Daily selected and all 131 columns included" class="step-img" loading="lazy">
+      <figcaption>Figure 4. Daily granularity with all columns included</figcaption>
+    </figure>
 
     <ul>
       <li>Select <strong>Daily</strong> granularity (one row per resource per day)</li>
@@ -213,7 +213,10 @@ code{font-family:var(--f-mono);font-size:0.86em;background:rgba(255,231,200,0.04
     <!-- ============================================================ -->
     <h2>Step 5: Configure delivery options</h2>
 
-    <img src="../../assets/blog/enable-data-exports/step5-delivery-options.png" alt="Delivery options with Overwrite existing file selected and Parquet compression format" class="step-img" loading="lazy">
+    <figure class="step-figure">
+      <img src="../../assets/blog/enable-data-exports/step5-delivery-options.png" alt="Delivery options with Overwrite existing file selected and Parquet compression format" class="step-img" loading="lazy">
+      <figcaption>Figure 5. Delivery options using Parquet format</figcaption>
+    </figure>
 
     <ul>
       <li><strong>File versioning:</strong> Overwrite existing data export file (saves S3 storage costs)</li>
@@ -226,7 +229,10 @@ code{font-family:var(--f-mono);font-size:0.86em;background:rgba(255,231,200,0.04
     <!-- ============================================================ -->
     <h2>Step 6: Configure S3 destination</h2>
 
-    <img src="../../assets/blog/enable-data-exports/step6-s3-destination.png" alt="S3 storage settings showing bucket name field, path prefix field, and Configure button" class="step-img" loading="lazy">
+    <figure class="step-figure">
+      <img src="../../assets/blog/enable-data-exports/step6-s3-destination.png" alt="S3 storage settings showing bucket name field, path prefix field, and Configure button" class="step-img" loading="lazy">
+      <figcaption>Figure 6. S3 destination settings for the export</figcaption>
+    </figure>
 
     <ul>
       <li><strong>Storage account:</strong> This account</li>
