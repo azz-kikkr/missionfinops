@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CUR 2.0 vs FOCUS: Which AWS Billing Export Should You Enable First?</title>
+  <meta name="description" content="CUR 2.0 vs FOCUS for AWS Data Exports. When to enable CUR first, when FOCUS matters, and why mature FinOps teams often use both.">
+  <meta name="theme-color" content="#0f1219">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://missionfinops.com/blog/cur-vs-focus/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="CUR 2.0 vs FOCUS: Which AWS Billing Export Should You Enable First?">
+  <meta property="og:description" content="CUR is for AWS investigation. FOCUS is for standardization. Here is which billing export to enable first.">
+  <meta property="og:url" content="https://missionfinops.com/blog/cur-vs-focus/">
+  <meta property="og:image" content="https://missionfinops.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CUR 2.0 vs FOCUS: Which AWS Billing Export Should You Enable First?">
+  <meta name="twitter:description" content="CUR is for AWS investigation. FOCUS is for standardization. Here is which billing export to enable first.">
+  <meta name="twitter:image" content="https://missionfinops.com/assets/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+:root{--bg:#0f1219;--bg-2:#1c1828;--bg-deep:#0f0d16;--bg-code:rgba(183,148,246,0.05);--text:#ece9e1;--text-dim:#a39ab4;--text-mute:#6f6884;--purple:#b794f6;--purple-h:#c9aef9;--purple-soft:rgba(183,148,246,0.10);--orange:#e8864a;--green:#6dd4a0;--border:rgba(255,231,200,0.06);--border-vis:rgba(255,231,200,0.14);--border-purple:rgba(183,148,246,0.30);--f-sans:'General Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--f-mono:'JetBrains Mono','SF Mono',Consolas,monospace;--f-serif:'Instrument Serif',Georgia,serif;--maxw:960px;--maxwn:1180px;--maxwx:1320px;--ease:cubic-bezier(0.16,1,0.3,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--f-sans);font-weight:400;font-size:16px;line-height:1.65;color:var(--text);background:var(--bg);overflow-x:hidden;position:relative}
+a{color:var(--purple);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s,color 0.2s}
+a:hover{border-bottom-color:var(--purple);color:var(--purple-h)}
+::selection{background:var(--purple-soft);color:var(--text)}
+:focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.75rem}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:1.1rem 0;background:rgba(15,13,22,0.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--maxwx);margin:0 auto;padding:0 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-brand{font-family:var(--f-mono);font-size:0.78rem;color:var(--text-dim);font-weight:500;border:none;white-space:nowrap}
+.nav-brand:hover{border:none;color:var(--text)}
+.nav-brand .em{color:var(--purple)}
+.nav-links{display:flex;gap:2rem;font-family:var(--f-sans);font-size:0.88rem;font-weight:500}
+.nav-links a{color:var(--text-dim);border-bottom:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--text);border-bottom:none}
+.nav-toggle{display:none;flex-direction:column;gap:5px;padding:6px}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--text)}
+.nav-mobile{display:none;flex-direction:column;gap:1rem;padding:1.25rem 1.75rem;background:rgba(15,13,22,0.97);border-bottom:1px solid var(--border);font-family:var(--f-sans);font-size:0.95rem}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:var(--text-dim);border:none}
+@media(max-width:820px){.nav-links{display:none}.nav-toggle{display:flex}}
+
+.eyebrow{font-family:var(--f-mono);font-size:0.75rem;letter-spacing:0.02em;color:var(--text-mute);margin-bottom:1.25rem}
+.eyebrow a{color:var(--text-dim);border:none}
+.eyebrow a:hover{color:var(--purple);border:none}
+h1,h2,h3{font-family:var(--f-sans);font-weight:600;letter-spacing:-0.025em;color:var(--text)}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.04;letter-spacing:-0.035em;font-weight:700;max-width:28ch;margin-bottom:1.25rem}
+h2{font-size:clamp(1.4rem,2.6vw,1.85rem);line-height:1.2;margin:3rem 0 1rem;max-width:32ch}
+h3{font-size:1.1rem;margin:2rem 0 0.75rem}
+.lede{font-size:1.1rem;color:var(--text-dim);max-width:840px;line-height:1.6;text-align:left;hyphens:none}
+code{font-family:var(--f-mono);font-size:0.86em;background:rgba(255,231,200,0.04);padding:0.1em 0.35em;border-radius:3px;color:var(--text)}
+
+.hero{padding:9rem 0 2rem}
+.post-meta{font-family:var(--f-mono);font-size:0.75rem;color:var(--text-mute);margin-bottom:0.85rem;letter-spacing:0.02em}
+.post-meta .num{color:var(--purple)}
+.post-meta .cat{color:var(--orange);text-transform:uppercase;letter-spacing:0.04em;font-size:0.7rem}
+
+.guide-body{padding:2rem 0 3rem}
+.guide-body .wrap{max-width:840px}
+.guide-body p{color:var(--text);max-width:100%;margin-bottom:1.4rem;font-size:1.05rem;line-height:1.82;text-align:left;hyphens:none}
+.guide-body ol,.guide-body ul{max-width:100%;margin:0 0 1.4rem 1.5rem;color:var(--text)}
+.guide-body li{margin-bottom:0.6rem;line-height:1.75;font-size:1.02rem}
+.guide-body strong{color:var(--purple);font-weight:600}
+
+.series-note{color:var(--text-dim);font-size:0.98rem;margin-top:-0.35rem}
+.pull-quote{border-left:2px solid var(--purple);padding:0.15rem 0 0.15rem 1rem;margin:1.5rem 0 1.75rem;color:var(--text-dim);font-size:1.1rem;line-height:1.7}
+.part-one{display:inline-flex;align-items:center;gap:0.55rem;margin:0.25rem 0 1.75rem;padding:0.75rem 0.9rem;border:1px solid var(--border-purple);border-radius:8px;background:var(--purple-soft);font-size:0.92rem;line-height:1.45;color:var(--text-dim)}
+.part-one::before{content:'01';font-family:var(--f-mono);font-size:0.72rem;color:var(--orange);letter-spacing:0.05em}
+.decision-card{margin:2rem 0 2.4rem;border:1px solid var(--border-purple);border-radius:8px;background:linear-gradient(135deg,rgba(183,148,246,0.14),rgba(232,134,74,0.07));box-shadow:0 18px 60px rgba(0,0,0,0.28);overflow:hidden}
+.decision-card .decision-top{padding:1rem 1.1rem;border-bottom:1px solid var(--border);font-family:var(--f-mono);font-size:0.72rem;color:var(--text-mute);letter-spacing:0.06em;text-transform:uppercase}
+.decision-grid{display:grid;grid-template-columns:1fr 1fr}
+.decision-item{padding:1.25rem;border-right:1px solid var(--border)}
+.decision-item:last-child{border-right:none}
+.decision-label{font-family:var(--f-mono);font-size:0.72rem;color:var(--orange);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.4rem}
+.decision-item strong{display:block;color:var(--text);font-size:1.32rem;line-height:1.18;letter-spacing:-0.02em}
+.visual-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.25rem 0 2rem}
+.visual-card{border:1px solid var(--border-vis);border-radius:8px;background:rgba(28,24,40,0.78);padding:1.2rem;min-width:0}
+.visual-card.accent{border-color:var(--border-purple);background:var(--bg-code)}
+.visual-card .kicker{font-family:var(--f-mono);font-size:0.7rem;color:var(--text-mute);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.55rem}
+.visual-card h3{margin:0 0 0.65rem;font-size:1.05rem;line-height:1.25}
+.visual-card p{font-size:0.95rem;line-height:1.65;color:var(--text-dim);margin-bottom:0}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:0.95rem}
+.tag{font-family:var(--f-mono);font-size:0.68rem;color:var(--text-dim);border:1px solid var(--border-vis);border-radius:999px;padding:0.2rem 0.45rem;background:rgba(255,231,200,0.03)}
+.example-callout{margin:1.5rem 0 2rem;border:1px solid var(--border-vis);border-radius:8px;background:rgba(255,231,200,0.03);padding:1rem 1.1rem}
+.example-callout p{margin:0 0 0.8rem!important;font-size:0.98rem!important;line-height:1.6!important;color:var(--text-dim)!important}
+.example-callout p:last-child{margin-bottom:0!important}
+.example-callout strong{color:var(--text)}
+.strong-callout{margin:2rem 0;border:1px solid rgba(232,134,74,0.35);border-radius:8px;background:rgba(232,134,74,0.07);padding:1.25rem 1.35rem}
+.strong-callout p{margin:0!important;font-size:1.18rem!important;line-height:1.55!important;color:var(--text)!important;letter-spacing:-0.01em}
+.comparison{width:100%;border-collapse:collapse;margin:1.5rem 0 2rem;border:1px solid var(--border-vis);border-radius:8px;overflow:hidden;background:var(--bg-code)}
+.comparison th,.comparison td{padding:0.8rem 1rem;text-align:left;border-bottom:1px solid var(--border);font-size:0.95rem;line-height:1.5}
+.comparison th{font-family:var(--f-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-mute);background:rgba(255,231,200,0.03)}
+.comparison td:nth-child(2){color:var(--purple)}
+.comparison td:nth-child(3){color:var(--green)}
+.comparison tr:last-child td{border-bottom:none}
+@media(max-width:720px){.decision-grid,.visual-grid{grid-template-columns:1fr}.decision-item{border-right:none;border-bottom:1px solid var(--border)}.decision-item:last-child{border-bottom:none}}
+@media(max-width:620px){.comparison,.comparison tbody,.comparison tr,.comparison td{display:block}.comparison thead{display:none}.comparison tr{border-bottom:1px solid var(--border);padding:0.65rem 0}.comparison tr:last-child{border-bottom:none}.comparison td{border-bottom:none;padding:0.35rem 1rem}.comparison td::before{content:attr(data-label);display:block;font-family:var(--f-mono);font-size:0.68rem;color:var(--text-mute);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.15rem}.comparison td:first-child{padding-top:0.55rem;color:var(--text);font-weight:600}.comparison td:last-child{padding-bottom:0.55rem}.part-one{display:flex;align-items:flex-start}}
+
+.post-back{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--f-sans);font-size:0.95rem;font-weight:500;color:var(--text-dim);margin-top:2rem;border:none;border-bottom:1px solid var(--border-vis);padding-bottom:2px;transition:color 0.2s,border-color 0.2s,gap 0.25s var(--ease)}
+.post-back::before{content:'\2190';color:var(--purple);font-family:var(--f-mono);transition:transform 0.25s var(--ease);display:inline-block}
+.post-back:hover{color:var(--purple);border-bottom-color:var(--purple);gap:0.85rem}
+.post-back:hover::before{transform:translateX(-3px)}
+
+.footer{border-top:1px solid var(--border);padding:3rem 0 2rem;margin-top:5rem}
+.footer-inner{max-width:var(--maxw);margin:0 auto;padding:0 1.75rem;display:flex;flex-direction:column;gap:1.5rem}
+.footer-links{display:flex;flex-wrap:wrap;gap:1.25rem;font-family:var(--f-mono);font-size:0.72rem}
+.footer-links a{color:var(--text-dim);border:none}
+.footer-links a:hover{color:var(--purple);border:none}
+.footer-meta{font-family:var(--f-mono);font-size:0.68rem;color:var(--text-mute);line-height:1.7}
+@media(min-width:769px){.footer-inner{flex-direction:row;justify-content:space-between;align-items:flex-start}}
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand"><span class="em">Kulshan</span> &middot; Mission FinOps</a>
+    <div class="nav-links">
+      <a href="/sample/">Sample Report</a>
+      <a href="/blog/">Cost Foundations</a>
+      <a href="/work-with-me/">Work with me</a>
+      <a href="/why-free/">Why Free?</a>
+      <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+      <a href="mailto:hello@missionfinops.com">Contact</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+    <a href="/sample/">Sample Report</a>
+    <a href="/blog/">Cost Foundations</a>
+    <a href="/work-with-me/">Work with me</a>
+    <a href="/why-free/">Why Free?</a>
+    <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+    <a href="mailto:hello@missionfinops.com">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><a href="/blog/">Cost Foundations</a> &middot; AWS Cost Foundations</p>
+    <p class="post-meta"><span class="num">2026-06-20</span> &nbsp;&middot;&nbsp; <span class="cat">field guide</span></p>
+    <h1>CUR 2.0 vs FOCUS: Which AWS Billing Export Should You Enable First?</h1>
+    <p class="lede">For most AWS environments, enable CUR 2.0 first. For multi-cloud environments, enable both.</p>
+  </div>
+</header>
+
+<article class="guide-body">
+  <div class="wrap">
+
+    <p class="series-note">AWS Cost Foundations Series &middot; Part 2</p>
+
+    <p>In the previous guide, I showed how to enable AWS Data Exports and configure CUR 2.0.</p>
+
+    <a href="/blog/enable-data-exports/" class="part-one">If you have not enabled Data Exports yet, start with Part 1.</a>
+
+    <p>The next question is usually: should I use CUR 2.0 or FOCUS?</p>
+
+    <div class="decision-card" aria-label="Billing export recommendation">
+      <div class="decision-top">Short answer</div>
+      <div class="decision-grid">
+        <div class="decision-item">
+          <div class="decision-label">AWS-only?</div>
+          <strong>Start with CUR 2.0.</strong>
+        </div>
+        <div class="decision-item">
+          <div class="decision-label">Multi-cloud?</div>
+          <strong>Enable both.</strong>
+        </div>
+      </div>
+    </div>
+
+    <p>That is the recommendation. The reason is simple: the two formats are built for different jobs.</p>
+
+    <div class="visual-grid" aria-label="CUR 2.0 and FOCUS comparison">
+      <section class="visual-card accent">
+        <div class="kicker">CUR 2.0</div>
+        <h3>AWS-native investigation dataset</h3>
+        <p>Preserves the AWS-specific detail you need when the bill changes and an engineer needs to explain why.</p>
+        <div class="tag-row">
+          <span class="tag">resource IDs</span>
+          <span class="tag">split cost</span>
+          <span class="tag">SP / RI detail</span>
+        </div>
+      </section>
+      <section class="visual-card">
+        <div class="kicker">FOCUS</div>
+        <h3>Standardized reporting dataset</h3>
+        <p>Maps provider billing into a common model that works better for finance, dashboards, and cross-cloud views.</p>
+        <div class="tag-row">
+          <span class="tag">common schema</span>
+          <span class="tag">multi-cloud</span>
+          <span class="tag">executive views</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="example-callout">
+      <p><strong>FinOps nerd corner:</strong> CUR 2.0 currently exposes roughly 115-131 available fields depending on export options and enabled AWS billing features. FOCUS exposes roughly 60 standardized fields.</p>
+      <p>That sounds like a huge difference, but it is mostly intentional. CUR preserves AWS-specific concepts like resource IDs, Split Cost Allocation, Savings Plan allocation, Reserved Instance allocation, Capacity Reservation attributes, and IAM principal allocation.</p>
+      <p>FOCUS normalizes cost data into a common schema for AWS, Azure, GCP, and SaaS providers. CUR is trying to describe AWS accurately. FOCUS is trying to describe cloud spending consistently.</p>
+    </div>
+
+    <h2>What changed?</h2>
+
+    <p>Historically, AWS customers enabled Cost and Usage Reports (CUR), and that became the billing dataset everyone built around.</p>
+
+    <p>Today, AWS Data Exports supports multiple billing schemas, including CUR 2.0 and FOCUS. Both are valid. Both are supported by AWS. Both contain cost and usage data.</p>
+
+    <p>The difference is in how that data is represented.</p>
+
+    <h2>CUR 2.0: the AWS-native dataset</h2>
+
+    <p>CUR 2.0 keeps the AWS-specific detail. Resource IDs. Split Cost Allocation. Savings Plans and Reserved Instances. Capacity reservations. Service-specific billing attributes.</p>
+
+    <p>That detail matters when you are trying to explain a real AWS bill, not just summarize it.</p>
+
+    <h2>FOCUS: the standardized dataset</h2>
+
+    <p>FOCUS, the FinOps Open Cost and Usage Specification, takes provider billing data and maps it into a shared schema.</p>
+
+    <p>It does not try to preserve every AWS-specific detail. It tries to make costs easier to compare across providers.</p>
+
+    <p>That is useful when the audience is finance, leadership, or anyone trying to look across AWS, Azure, Google Cloud, and SaaS spend without learning every provider's billing vocabulary.</p>
+
+    <h2>A quick example</h2>
+
+    <div class="example-callout">
+      <p><strong>Finance asks:</strong> "How much are we spending across AWS, Azure, and GCP?" Use FOCUS.</p>
+      <p><strong>An engineer asks:</strong> "Why did our EKS platform costs increase 35%?" Use CUR 2.0.</p>
+    </div>
+
+    <p>That is the split. CUR helps you answer "why did this happen?" FOCUS helps you answer "what are we spending across everything?"</p>
+
+    <h2>Practical comparison</h2>
+
+    <table class="comparison">
+      <thead>
+        <tr>
+          <th>Use case</th>
+          <th>CUR 2.0</th>
+          <th>FOCUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td data-label="Use case">EKS/ECS split cost allocation</td><td data-label="CUR 2.0">Strong</td><td data-label="FOCUS">Limited</td></tr>
+        <tr><td data-label="Use case">Resource-level AWS investigation</td><td data-label="CUR 2.0">Strong</td><td data-label="FOCUS">Limited</td></tr>
+        <tr><td data-label="Use case">Savings Plans and RI analysis</td><td data-label="CUR 2.0">Strong</td><td data-label="FOCUS">Standardized</td></tr>
+        <tr><td data-label="Use case">Multi-cloud reporting</td><td data-label="CUR 2.0">Weak</td><td data-label="FOCUS">Strong</td></tr>
+        <tr><td data-label="Use case">Executive dashboards</td><td data-label="CUR 2.0">Possible</td><td data-label="FOCUS">Strong</td></tr>
+        <tr><td data-label="Use case">Finance reporting</td><td data-label="CUR 2.0">Possible</td><td data-label="FOCUS">Strong</td></tr>
+        <tr><td data-label="Use case">Deep AWS forensics</td><td data-label="CUR 2.0">Strong</td><td data-label="FOCUS">Weak</td></tr>
+      </tbody>
+    </table>
+
+    <h2>What I recommend</h2>
+
+    <p><strong>AWS-only environments:</strong> enable CUR 2.0 first. Preserve the richest AWS billing dataset available.</p>
+
+    <p><strong>Multi-cloud environments:</strong> enable CUR 2.0 and FOCUS. Use CUR when you need AWS detail. Use FOCUS when you need a cleaner view across providers.</p>
+
+    <p>Storage is inexpensive. Historical billing data is valuable.</p>
+
+    <div class="strong-callout">
+      <p>You can always simplify billing data later. You cannot recover billing data that was never collected.</p>
+    </div>
+
+    <h2>What's next</h2>
+
+    <p>Enabling Data Exports is only the first step. In the next guide, we will look at what to do with CUR data once it starts arriving, including Athena, dashboards, FinOps tooling, and when you might not need any of them yet.</p>
+
+    <a href="/blog/" class="post-back">Back to Cost Foundations</a>
+  </div>
+</article>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/sample/">Sample</a>
+      <a href="/policy/">IAM Policy</a>
+      <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
+      <a href="/changelog/">Changelog</a>
+      <a href="/about/">About</a>
+      <a href="/work-with-me/">Work with me</a>
+      <a href="mailto:security@missionfinops.com">Security</a>
+    </div>
+    <div class="footer-meta">
+      MissionFinOps &middot; Mission, BC, Canada<br>
+      Kulshan is Apache 2.0 open source.<br>
+      <a href="/why-free/" style="color:#6f6884">Why is Kulshan free?</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){'use strict';var t=document.getElementById('nav-toggle'),m=document.getElementById('nav-mobile');t.addEventListener('click',function(){var o=m.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');m.setAttribute('aria-hidden',o?'false':'true')});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');t.setAttribute('aria-expanded','false');m.setAttribute('aria-hidden','true')})})}());
+</script>
+</body>
+</html>
