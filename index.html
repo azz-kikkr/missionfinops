@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kulshan - The blood test for your AWS bill</title>
-<meta name="description" content="Kulshan is a free, open-source, read-only AWS audit CLI. Local-first FinOps baseline for humans and AI agents. One command, one report. No SaaS. No telemetry.">
+<title>Mission FinOps - Enterprise FinOps Practice Development</title>
+<meta name="description" content="Mission FinOps helps AWS customers build FinOps practices that align finance, engineering, product, platform, procurement, and leadership around cloud cost accountability.">
 <meta name="theme-color" content="#0f1219">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://missionfinops.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Kulshan | Local-First AWS FinOps Baseline">
-<meta property="og:description" content="Open-source AWS FinOps baseline tool. No SaaS. No data uploads. No CUR required. Generate a local HTML report from your AWS account.">
+<meta property="og:title" content="Mission FinOps | Enterprise FinOps Practice Development">
+<meta property="og:description" content="Build a repeatable FinOps operating model for AWS cost visibility, accountability, governance, and executive decision-making.">
 <meta property="og:url" content="https://missionfinops.com/">
 <meta property="og:image" content="https://missionfinops.com/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kulshan | Local-First AWS FinOps Baseline">
-<meta name="twitter:description" content="Open-source AWS FinOps baseline tool. No SaaS. No data uploads. No CUR required. Generate a local HTML report from your AWS account.">
+<meta name="twitter:title" content="Mission FinOps | Enterprise FinOps Practice Development">
+<meta name="twitter:description" content="Build a repeatable FinOps operating model for AWS cost visibility, accountability, governance, and executive decision-making.">
 <meta name="twitter:image" content="https://missionfinops.com/assets/og-image.png">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -28,9 +28,9 @@
 :root{
 --bg:#0f1219;--bg-2:#151b24;--bg-3:#1a2230;
 --text:#e8edf3;--text-dim:#9eafc4;--text-mute:#5e7389;
---accent:#b794f6;--accent-h:#d4b8ff;--accent-soft:rgba(183,148,246,0.10);
+--accent:#c084fc;--accent-h:#e0c3ff;--accent-soft:rgba(192,132,252,0.16);
 --green:#6dd4a0;--orange:#e8a64a;
---border:rgba(148,184,212,0.08);--border-vis:rgba(148,184,212,0.18);--border-accent:rgba(183,148,246,0.35);
+--border:rgba(148,184,212,0.08);--border-vis:rgba(148,184,212,0.18);--border-accent:rgba(192,132,252,0.52);
 --f-sans:'General Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 --f-mono:'JetBrains Mono','SF Mono',Consolas,monospace;
 --maxwn:1080px;
@@ -50,10 +50,12 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:0.8rem 0;background:rgba(15,18,25,0.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
 .nav-inner{max-width:var(--maxwn);margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between}
 .nav-brand{font-family:var(--f-mono);font-size:0.75rem;color:var(--text-dim);font-weight:500}
-.nav-brand .em{color:var(--accent)}
+.nav-brand .em{color:var(--accent);text-shadow:0 0 14px rgba(192,132,252,0.24)}
 .nav-links{display:flex;gap:1.5rem;font-family:var(--f-sans);font-size:0.82rem;font-weight:500}
 .nav-links a{color:var(--text-dim)}
 .nav-links a:hover{color:var(--accent)}
+.nav-links .nav-cta{color:var(--bg);background:var(--accent);padding:0.4rem 0.7rem;border-radius:8px;box-shadow:0 0 14px rgba(192,132,252,0.18)}
+.nav-links .nav-cta:hover{color:var(--bg);background:var(--accent-h)}
 .nav-toggle{display:none;padding:8px;flex-direction:column;gap:4px}
 .nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text)}
 .nav-mobile{display:none;flex-direction:column;gap:1rem;padding:1rem 1.25rem;background:rgba(15,18,25,0.97);border-bottom:1px solid var(--border);font-size:0.95rem}
@@ -62,18 +64,26 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .hero{position:relative;overflow:hidden;padding:5.5rem 0 2.5rem}
 .hero-bg{position:absolute;inset:0;background:url('assets/kulshan-hero.jpg') center 32%/cover no-repeat;filter:brightness(0.65) saturate(0.85)}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(15,18,25,0.92) 0%,rgba(15,18,25,0.75) 50%,rgba(15,18,25,0.5) 100%)}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(232,237,243,0.035) 0 1px,transparent 1px 7px);opacity:0.16;mix-blend-mode:screen;pointer-events:none;animation:scan-drift 18s linear infinite}
+.hero::after{content:"";position:absolute;width:26rem;height:26rem;right:-8rem;bottom:-14rem;background:radial-gradient(circle,rgba(192,132,252,0.22),rgba(192,132,252,0.05) 42%,transparent 68%);filter:blur(4px);opacity:0.7;pointer-events:none;animation:ambient-pulse 12s ease-in-out infinite}
 .hero-content{position:relative;z-index:1}
 .hero h1{font-family:var(--f-sans);font-size:clamp(1.6rem,6vw,2.6rem);font-weight:700;line-height:1.15;margin-bottom:0.75rem}
-.hero h1 .a{color:var(--accent)}
+.hero h1 .a{color:var(--accent);text-shadow:0 0 16px rgba(192,132,252,0.55),0 0 34px rgba(192,132,252,0.25)}
 .hero-sub{font-size:0.9rem;color:var(--text-dim);line-height:1.7;margin-bottom:1rem;max-width:48ch}
+.founder-line{font-family:var(--f-mono);font-size:0.74rem;color:var(--text-mute);line-height:1.6;margin-bottom:0.55rem;max-width:62ch}
+.aws-line{font-family:var(--f-mono);font-size:0.72rem;color:var(--text-dim);line-height:1.6;margin-bottom:1.5rem;max-width:64ch}
+.badge-row{display:flex;gap:0.55rem;flex-wrap:wrap;margin:1rem 0 0.85rem}
+.badge-row span{font-family:var(--f-mono);font-size:0.68rem;color:var(--text);border:1px solid var(--border-accent);background:rgba(21,27,36,0.6);border-radius:999px;padding:0.28rem 0.55rem}
 .ctas{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
 .btn{display:inline-block;padding:0.75rem 1.5rem;border-radius:8px;font-family:var(--f-mono);font-size:0.8rem;font-weight:500;text-align:center;transition:all 0.2s}
-.btn-primary{background:var(--accent);color:var(--bg)}
-.btn-primary:hover{background:var(--accent-h);color:var(--bg);box-shadow:0 0 24px rgba(183,148,246,0.3)}
+.btn-primary{background:var(--accent);color:var(--bg);box-shadow:0 0 18px rgba(192,132,252,0.22)}
+.btn-primary:hover{background:var(--accent-h);color:var(--bg);box-shadow:0 0 30px rgba(192,132,252,0.42)}
 .btn-ghost{border:1px solid var(--border-accent);color:var(--accent)}
 .btn-ghost:hover{background:var(--accent-soft)}
 .btn-tertiary{border:1px solid var(--border-vis);color:var(--text-dim);font-size:0.75rem}
 .btn-tertiary:hover{color:var(--accent);border-color:var(--border-accent)}
+@keyframes scan-drift{from{background-position:0 0}to{background-position:0 56px}}
+@keyframes ambient-pulse{0%,100%{transform:translate3d(0,0,0);opacity:0.52}50%{transform:translate3d(-0.7rem,-0.35rem,0);opacity:0.82}}
 </style>
 <style>
 .cmd-block{background:rgba(15,18,25,0.75);border:1px solid var(--border-vis);border-radius:8px;padding:1rem 1.25rem;font-family:var(--f-mono);font-size:0.78rem;color:var(--text-dim);line-height:2;backdrop-filter:blur(6px);margin-bottom:0.5rem}
@@ -83,22 +93,27 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .section{padding:3.5rem 0;border-top:1px solid var(--border)}
 .section-title{font-family:var(--f-sans);font-size:clamp(1.15rem,4vw,1.5rem);font-weight:700;color:var(--text);margin-bottom:0.5rem}
 .section-sub{font-size:0.85rem;color:var(--text-dim);margin-bottom:1.5rem;line-height:1.7;max-width:72ch}
-.finds-grid{display:grid;grid-template-columns:1fr;gap:0.6rem;margin-top:1.25rem}
-.finds-item{font-family:var(--f-mono);font-size:0.78rem;color:var(--text-dim);padding:0.6rem 0;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:0.5rem}
-.finds-item .ck{color:var(--green);font-size:0.7rem}
-.audience-grid{display:grid;grid-template-columns:1fr;gap:0.5rem;margin-top:1.25rem}
-.audience-item{font-family:var(--f-mono);font-size:0.78rem;color:var(--text-dim);padding:0.5rem 0;display:flex;align-items:baseline;gap:0.5rem}
-.audience-item .dot{color:var(--accent);font-size:0.6rem}
 .services-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;margin-top:1.5rem}
 .service-card{background:var(--bg-2);border:1px solid var(--border-vis);border-radius:10px;padding:1.5rem;transition:border-color 0.2s}
-.service-card:hover{border-color:var(--border-accent)}
+.service-card:hover{border-color:var(--border-accent);box-shadow:0 0 0 1px rgba(192,132,252,0.08),0 0 22px rgba(192,132,252,0.08)}
 .service-card h3{font-family:var(--f-sans);font-size:1rem;font-weight:600;color:var(--text);margin-bottom:0.5rem}
 .service-card p{font-size:0.85rem;color:var(--text-dim);line-height:1.65;margin-bottom:0.75rem}
 .service-card .arrow{font-family:var(--f-mono);font-size:0.78rem;color:var(--accent);font-weight:500}
 .service-card .arrow:hover{color:var(--accent-h)}
+.trust-list{display:flex;gap:0.6rem;flex-wrap:wrap;margin:1.25rem 0 1.5rem}
+.trust-list span{font-family:var(--f-mono);font-size:0.72rem;color:var(--text-dim);border:1px solid var(--border-vis);border-radius:999px;padding:0.35rem 0.65rem;background:rgba(21,27,36,0.45)}
+.trust-list .ok{color:var(--text);border-color:rgba(109,212,160,0.35)}
+.trust-list .ok::before{content:"✓ ";color:var(--green)}
+.kulshan-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:start}
+.terminal-panel{position:relative;background:rgba(15,18,25,0.82);border:1px solid var(--border-vis);border-radius:10px;overflow:hidden}
+.terminal-bar{display:flex;gap:0.35rem;padding:0.7rem 0.85rem;border-bottom:1px solid var(--border);background:rgba(21,27,36,0.72)}
+.terminal-bar span{width:8px;height:8px;border-radius:999px;background:var(--text-mute)}
+.terminal-bar span:nth-child(1){background:#e86b6b}.terminal-bar span:nth-child(2){background:#e8a64a}.terminal-bar span:nth-child(3){background:#6dd4a0}
+.terminal-panel .cmd-block{border:none;border-radius:0;background:transparent;margin:0;padding:1.1rem 1.25rem}
 .why-copy{font-size:0.88rem;color:var(--text-dim);line-height:1.8;margin-bottom:0.75rem;max-width:72ch}
 .why-copy strong{color:var(--text);font-weight:600}
-.founder-tag{font-family:var(--f-mono);font-size:0.72rem;color:var(--text-mute);margin-top:1rem}
+.baseline-line{font-size:1rem;color:var(--text);border-left:2px solid var(--accent);padding-left:1rem;margin:1rem 0 0.9rem}
+.kulshan-position{font-size:clamp(1rem,3vw,1.25rem);line-height:1.45;color:var(--text);font-weight:600;max-width:58ch;border-left:2px solid var(--accent);padding-left:1rem;margin:-0.2rem 0 1.5rem}
 </style>
 <style>
 .footer{padding:3rem 0 2rem;border-top:1px solid var(--border);margin-top:2rem}
@@ -107,10 +122,9 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .footer-links a{color:var(--text-dim)}
 .footer-links a:hover{color:var(--accent)}
 .footer-meta{font-family:var(--f-mono);font-size:0.68rem;color:var(--text-mute);line-height:1.7}
+.footer-egg{font-family:var(--f-mono);font-size:0.64rem;color:var(--text-mute);margin-top:0.85rem}
 @media(min-width:520px){
-  .finds-grid{grid-template-columns:1fr 1fr}
-  .audience-grid{grid-template-columns:1fr 1fr}
-  .services-grid{grid-template-columns:1fr 1fr 1fr}
+  .services-grid{grid-template-columns:1fr 1fr}
 }
 @media(min-width:769px){
   .wrap{padding:0 1.75rem}
@@ -118,6 +132,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   .ctas{flex-direction:row}
   .btn{min-width:auto}
   .footer-inner{flex-direction:row;justify-content:space-between;align-items:flex-start}
+  .kulshan-grid{grid-template-columns:0.9fr 1.1fr}
   .nav-toggle{display:none!important}
   .section{padding:5rem 0}
 }
@@ -128,31 +143,32 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   .ctas .btn{width:100%;text-align:center}
   .services-grid{grid-template-columns:1fr}
 }
+@media(prefers-reduced-motion:reduce){
+  .hero::before,.hero::after{animation:none}
+}
 </style>
 
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-brand"><span class="em">Kulshan</span> · Mission FinOps</a>
+    <a href="/" class="nav-brand"><span class="em">Mission</span> FinOps</a>
     <div class="nav-links">
-      <a href="/sample/">Sample Report</a>
-      <a href="/blog/">Cost Foundations</a>
-      <a href="/work-with-me/">Work with me</a>
-      <a href="/why-free/">Why Free?</a>
-      <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
-      <a href="mailto:hello@missionfinops.com">Contact</a>
+      <a href="#work">What we do</a>
+      <a href="#kulshan">Kulshan</a>
+      <a href="#why">Why us</a>
+      <a href="#guides">Guides</a>
+      <a href="mailto:hello@missionfinops.com" class="nav-cta">Book Discovery Call</a>
     </div>
     <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-mobile').classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile">
-    <a href="/sample/">Sample Report</a>
-    <a href="/blog/">Cost Foundations</a>
-    <a href="/work-with-me/">Work with me</a>
-    <a href="/why-free/">Why Free?</a>
-    <a href="https://github.com/azz-kikkr/kulshan">GitHub</a>
-    <a href="mailto:hello@missionfinops.com">Contact</a>
+    <a href="#work">What we do</a>
+    <a href="#kulshan">Kulshan</a>
+    <a href="#why">Why us</a>
+    <a href="#guides">Guides</a>
+    <a href="mailto:hello@missionfinops.com">Book Discovery Call</a>
   </div>
 </nav>
 
@@ -162,113 +178,122 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="wrap" style="max-width:680px">
-      <h1>The <span class="a">blood test</span> for your AWS bill.</h1>
-      <p class="hero-sub">Generate a VP/CFO-ready AWS cost report in minutes.</p>
-      <p style="font-family:var(--f-mono);font-size:0.8rem;color:var(--text-dim);margin-bottom:1.5rem">No setup. No data uploads. No SaaS.</p>
-      <div class="cmd-block">
-        <span class="pr">$</span> <span class="cm">pip install kulshan</span><br>
-        <span class="pr">$</span> <span class="cm">aws login</span><br>
-        <span class="pr">$</span> <span class="cm">kulshan report</span>
+      <p style="font-family:var(--f-mono);font-size:0.82rem;color:var(--accent);margin-bottom:0.75rem">Mission FinOps</p>
+      <h1>Understand your AWS bill.<br>Build a <span class="a">FinOps practice.</span></h1>
+      <p class="hero-sub">Mission FinOps helps teams understand where cloud spend comes from, who owns it, and what to do next.</p>
+      <div class="badge-row" aria-label="Mission FinOps trust signals">
+        <span>Former AWS</span>
+        <span>Open source</span>
+        <span>Human-first</span>
       </div>
-      <p class="cmd-note" style="margin-bottom:1.5rem">Generates HTML and JSON reports locally using your existing AWS credentials.</p>
+      <p class="aws-line">Built from six years helping AWS customers navigate cloud cost, architecture, operations, and governance.</p>
       <div class="ctas">
-        <a href="/sample/" class="btn btn-primary">View Sample Report</a>
-        <a href="https://pypi.org/project/kulshan/" class="btn btn-ghost">Install Kulshan</a>
-        <a href="https://github.com/azz-kikkr/kulshan" class="btn btn-tertiary">GitHub</a>
+        <a href="mailto:hello@missionfinops.com" class="btn btn-primary">Book Discovery Call</a>
+        <a href="/sample/" class="btn btn-ghost">View Sample Assessment</a>
+        <a href="https://pypi.org/project/kulshan/" class="btn btn-tertiary">Try Kulshan Free CLI</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRANSFORMATION -->
-<section class="section" style="padding:2.5rem 0">
-  <div class="wrap" style="text-align:center">
-    <div style="display:inline-flex;flex-direction:column;align-items:center;gap:0.5rem;font-family:var(--f-mono);font-size:0.85rem">
-      <span style="color:var(--text);font-weight:500">Your AWS Account</span>
-      <span style="color:var(--text-mute);font-size:1.2rem">&darr;</span>
-      <span style="color:var(--accent);font-weight:600">Kulshan</span>
-      <span style="color:var(--text-mute);font-size:1.2rem">&darr;</span>
-      <span style="color:var(--green);font-weight:500">VP/CFO-ready Cost Report</span>
-    </div>
-  </div>
-</section>
-
-<!-- QUESTIONS KULSHAN ANSWERS -->
-<section class="section">
+<!-- WHAT WE DO -->
+<section class="section" id="work">
   <div class="wrap">
-    <h2 class="section-title">Questions Kulshan answers</h2>
-    <div class="finds-grid">
-      <div class="finds-item"><span class="ck">&#10003;</span> Cost drivers by service, account, and region</div>
-      <div class="finds-item"><span class="ck">&#10003;</span> Spend changes and anomalies</div>
-      <div class="finds-item"><span class="ck">&#10003;</span> Tagging and ownership gaps</div>
-      <div class="finds-item"><span class="ck">&#10003;</span> Idle or orphaned resources</div>
-      <div class="finds-item"><span class="ck">&#10003;</span> Savings Plan and RI coverage signals</div>
-      <div class="finds-item"><span class="ck">&#10003;</span> Top actions for humans and agents</div>
-    </div>
-    <p style="font-family:var(--f-mono);font-size:0.82rem;color:var(--text-dim);margin-top:1.5rem;max-width:56ch">The goal is not another dashboard. The goal is a trustworthy baseline.</p>
-  </div>
-</section>
-
-<!-- HOW I HELP -->
-<section class="section">
-  <div class="wrap">
-    <h2 class="section-title">How I help</h2>
-    <p class="section-sub">Most organizations do not need another cloud cost platform. They need AWS cost data integrated into the systems they already use.</p>
-    <p class="section-sub" style="margin-top:-0.75rem">Most organizations already have dashboards. The problem is that AWS cost data never reaches the people making decisions.</p>
+    <h2 class="section-title">What we do</h2>
+    <p class="section-sub">Three practical ways to get from confusing AWS spend to decisions people can actually make.</p>
     <div class="services-grid">
       <a href="/work-with-me/" class="service-card" style="text-decoration:none">
-        <h3>AWS Cost Data Pipelines</h3>
-        <p>Turn AWS billing data into business data. Get cost data into Power BI, Tableau, Snowflake, Databricks, or existing finance systems.</p>
-        <span class="arrow">Learn more &rarr;</span>
+        <h3>FinOps Practice Development</h3>
+        <p>Build ownership, governance, reporting, and accountability around AWS spend.</p>
+        <span class="arrow">Work with me &rarr;</span>
+      </a>
+      <a href="mailto:hello@missionfinops.com" class="service-card" style="text-decoration:none">
+        <h3>AI FinOps Agents &amp; Workflows</h3>
+        <p>Build internal assistants and workflows that help investigate cloud spend, explain cost changes, summarize findings, and support FinOps decision-making using your AWS data.</p>
+        <span class="arrow">Discuss an AI workflow &rarr;</span>
       </a>
       <a href="/work-with-me/" class="service-card" style="text-decoration:none">
-        <h3>Fractional FinOps Leadership</h3>
-        <p>FinOps expertise without a full-time hire. Ideal for organizations with multiple AWS accounts, complex billing, or executive visibility gaps.</p>
-        <span class="arrow">Learn more &rarr;</span>
-      </a>
-      <a href="/work-with-me/" class="service-card" style="text-decoration:none">
-        <h3>AWS Baseline Review</h3>
-        <p>Start with a baseline. Two weeks, fixed fee. A written, dollar-quantified diagnostic of your AWS account.</p>
-        <span class="arrow">Learn more &rarr;</span>
+        <h3>Executive Cost Reviews</h3>
+        <p>Understand what changed, why it changed, who owns it, and what to do next.</p>
+        <span class="arrow">Book a review &rarr;</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- WHO KULSHAN IS FOR -->
-<section class="section">
+<!-- KULSHAN -->
+<section class="section" id="kulshan">
   <div class="wrap">
-    <h2 class="section-title">Who Kulshan is for</h2>
-    <div class="audience-grid">
-      <div class="audience-item"><span class="dot">&#9679;</span> FinOps practitioners before governance reviews</div>
-      <div class="audience-item"><span class="dot">&#9679;</span> AWS consultants before customer workshops</div>
-      <div class="audience-item"><span class="dot">&#9679;</span> Platform teams before buying a FinOps platform</div>
-      <div class="audience-item"><span class="dot">&#9679;</span> Engineering leaders investigating cloud spend</div>
-      <div class="audience-item"><span class="dot">&#9679;</span> AI agents that need evidence before recommendations</div>
+    <div class="kulshan-grid">
+      <div class="terminal-panel" aria-label="Kulshan install commands">
+        <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="cmd-block">
+          <span class="pr">$</span> <span class="cm">pip install kulshan</span><br>
+          <span class="pr">$</span> <span class="cm">aws login</span><br>
+          <span class="pr">$</span> <span class="cm">kulshan report</span>
+        </div>
+      </div>
+      <div>
+        <h2 class="section-title">Kulshan is the free diagnostic</h2>
+        <p class="section-sub">Every engagement starts with the same question: What is actually happening in our AWS bill?</p>
+        <p class="section-sub" style="margin-top:-0.75rem">Kulshan is our open-source AWS assessment tool. It generates a local baseline report using read-only AWS APIs.</p>
+        <p class="kulshan-position">Kulshan is not the business. It is the free blood test before the real conversation.</p>
+        <p class="cmd-note">Generates HTML and JSON reports locally using your existing AWS credentials.</p>
+        <div class="trust-list" aria-label="Kulshan trust signals">
+          <span class="ok">No SaaS</span>
+          <span class="ok">No telemetry</span>
+          <span class="ok">No data uploads</span>
+          <span class="ok">No write access</span>
+        </div>
+        <div class="ctas" style="margin-bottom:0">
+          <a href="https://pypi.org/project/kulshan/" class="btn btn-primary">Try Kulshan Free CLI</a>
+          <a href="https://github.com/azz-kikkr/kulshan" class="btn btn-ghost">GitHub</a>
+          <a href="/why-free/" class="btn btn-tertiary">Why Free?</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WHY I BUILT KULSHAN -->
-<section class="section">
+<!-- WHY US -->
+<section class="section" id="why">
   <div class="wrap">
-    <h2 class="section-title">Why I built Kulshan</h2>
-    <p class="why-copy">Over six years working with AWS customers. The same pattern kept showing up.</p>
-    <p class="why-copy"><strong>Teams discuss solutions before understanding the baseline.</strong></p>
-    <p class="why-copy">Kulshan began as the audit I kept performing manually. Cost Explorer, then cross-referencing, then documenting findings, then summarizing for the customer. Over time it became a CLI.</p>
-    <p class="why-copy">Run one command. Get one report. Start from facts.</p>
-    <p class="founder-tag">Built by Yuvdeep Singh. 6+ years helping AWS customers understand cloud costs, architecture, and operations. Mission FinOps. Mission, BC.</p>
+    <h2 class="section-title">Why I started Mission FinOps</h2>
+    <p class="baseline-line">Most teams try to optimize before they understand the bill.</p>
+    <p class="why-copy">Mission FinOps is built by Yuvdeep Singh in Mission, BC. Former AWS advisor, network engineer, open-source builder, and lifelong systems nerd.</p>
+    <p class="why-copy">Six years helping AWS customers understand cloud costs, architecture, operations, and governance.</p>
+    <p class="why-copy">Before cloud and FinOps, I was a network engineer. I still believe understanding systems matters more than memorizing products.</p>
+  </div>
+</section>
+
+<!-- GUIDES -->
+<section class="section" id="guides">
+  <div class="wrap">
+    <h2 class="section-title">Guides</h2>
+    <p class="section-sub">Field notes and practical guides for people trying to make AWS spend understandable.</p>
+    <div class="services-grid">
+      <a href="/guides/cur-vs-focus/" class="service-card" style="text-decoration:none">
+        <h3>AWS CUR 2.0 vs FOCUS</h3>
+        <p>Understand AWS-native cost reporting versus the FinOps Open Cost and Usage Specification.</p>
+        <span class="arrow">Read guide &rarr;</span>
+      </a>
+      <a href="/guides/finops-not-a-tool-problem/" class="service-card" style="text-decoration:none">
+        <h3>Why FinOps Is Not a Tool Problem</h3>
+        <p>Why dashboards, agents, and platforms fail when ownership and accountability are missing.</p>
+        <span class="arrow">Read guide &rarr;</span>
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
 <section class="section" style="text-align:center;padding:4rem 0">
   <div class="wrap">
-    <h2 class="section-title" style="max-width:none;text-align:center">Get your baseline.</h2>
-    <p style="font-family:var(--f-mono);font-size:0.85rem;color:var(--text-dim);margin:1rem 0 1.5rem">pip install kulshan &middot; kulshan report &middot; done.</p>
+    <h2 class="section-title" style="max-width:none;text-align:center">Ready to understand your AWS bill?</h2>
     <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap">
-      <a href="/sample/" class="btn btn-primary">View Sample Report</a>
-      <a href="/work-with-me/" class="btn btn-ghost">Work with me</a>
+      <a href="mailto:hello@missionfinops.com" class="btn btn-primary">Book Discovery Call</a>
+      <a href="/sample/" class="btn btn-ghost">View Sample Assessment</a>
+      <a href="https://pypi.org/project/kulshan/" class="btn btn-tertiary">Try Kulshan Free CLI</a>
     </div>
   </div>
 </section>
@@ -290,6 +315,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
         MissionFinOps &middot; Mission, BC, Canada<br>
         Kulshan is Apache 2.0 open source.<br>
         <a href="/why-free/" style="color:#5e7389">Why is Kulshan free?</a>
+        <div class="footer-egg">No dashboards were harmed.</div>
       </div>
     </div>
   </div>
