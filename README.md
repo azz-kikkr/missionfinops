@@ -4,6 +4,37 @@
 
 Open-source, local-first AWS FinOps audit CLI. One command, one report. No SaaS. No telemetry.
 
+## PyPI quickstart
+
+```
+pip install kulshan
+aws login
+kulshan report
+```
+
+## AWS Credentials
+
+Kulshan uses your existing AWS CLI credentials.
+
+Recommended:
+
+```
+aws login
+kulshan report
+```
+
+If your AWS CLI does not support `aws login`, use:
+
+```
+aws sso login
+```
+
+or configure credentials with:
+
+```
+aws configure
+```
+
 ## What is Kulshan
 
 Kulshan is a read-only CLI that audits your AWS account and produces a scored report. It runs locally with the AWS credentials you already use. Nothing leaves your machine.

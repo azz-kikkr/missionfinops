@@ -141,7 +141,11 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .trust-list{display:flex;gap:var(--sp-3);flex-wrap:wrap;margin:var(--sp-4) 0}
 .trust-list span{font-family:var(--f-mono);font-size:var(--fs-sm);color:var(--text-dim);border:1px solid var(--border-vis);border-radius:var(--r-pill);padding:var(--sp-2) var(--sp-3);background:rgba(21,27,36,0.45)}
 .trust-list .ok{color:var(--text);border-color:rgba(109,212,160,0.35)}
-.trust-list .ok::before{content:"✓ ";color:var(--green)}
+.trust-list .ok::before{content:"";display:inline-block;width:0.35rem;height:0.35rem;border-radius:var(--r-pill);background:var(--green);margin-right:var(--sp-2);vertical-align:0.08rem}
+.split-note{display:grid;grid-template-columns:1fr;gap:var(--sp-2);margin:0 0 var(--sp-4)}
+.split-note div{border-left:1px solid var(--border-vis);padding-left:var(--sp-3)}
+.split-note strong{display:block;font-family:var(--f-mono);font-size:var(--fs-xs);color:var(--text);margin-bottom:var(--sp-1)}
+.split-note span{display:block;font-size:var(--fs-sm);line-height:1.55;color:var(--text-dim)}
 .kulshan-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-4);align-items:start}
 .terminal-panel{position:relative;background:rgba(15,18,25,0.82);border:1px solid var(--border-vis);border-radius:var(--r-md);overflow:hidden}
 .terminal-bar{display:flex;gap:var(--sp-2);padding:var(--sp-3);border-bottom:1px solid var(--border);background:rgba(21,27,36,0.72)}
@@ -200,6 +204,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   .footer-inner{flex-direction:row;justify-content:space-between;align-items:flex-start}
   .kulshan-grid{grid-template-columns:0.9fr 1.1fr}
   .kulshan-flow{grid-template-columns:repeat(3,1fr)}
+  .split-note{grid-template-columns:1fr 1fr}
   .why-grid{grid-template-columns:1.1fr 0.9fr}
   .nav-toggle{display:none!important}
   .section{padding:calc(var(--sp-7) + var(--sp-3)) 0}
@@ -385,6 +390,16 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
           <span class="ok">No telemetry</span>
           <span class="ok">No data uploads</span>
           <span class="ok">No write access</span>
+        </div>
+        <div class="split-note" aria-label="Kulshan and Mission FinOps roles">
+          <div>
+            <strong>Kulshan</strong>
+            <span>The free local audit that produces the evidence.</span>
+          </div>
+          <div>
+            <strong>MissionFinOps</strong>
+            <span>The advisory work that turns evidence into decisions.</span>
+          </div>
         </div>
         <div class="ctas" style="margin-bottom:0;">
           <a href="https://pypi.org/project/kulshan/" class="btn btn-primary">Try Kulshan Free CLI</a>
