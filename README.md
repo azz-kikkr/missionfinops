@@ -108,11 +108,11 @@ Kulshan does not phone home. No analytics. No crash reports. No usage tracking. 
 
 A sample report rendered against synthetic fixture data is available at [missionfinops.com/sample/](https://missionfinops.com/sample/).
 
-## MissionFinOps Agent - Private Preview
+## MissionFinOps advisory
 
-Kulshan is the audit. MissionFinOps Agent is the workflow on top.
+Kulshan is the audit. MissionFinOps is the advisory work that follows.
 
-The agent builds on the Kulshan evidence baseline to help teams prepare cost review notes, track exceptions, and identify next actions. It is currently in private preview.
+The advisory workflow builds on the Kulshan evidence baseline to help teams prepare cost review notes, track exceptions, and identify next actions. Agent-assisted workflow support is in private preview.
 
 Interested? hello@missionfinops.com
 
