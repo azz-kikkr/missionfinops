@@ -1,12 +1,12 @@
 # MissionFinOps - for AI agents
 
-MissionFinOps builds Kulshan, a read-only AWS FinOps audit CLI. Based in Mission, BC.
+MissionFinOps is an AWS FinOps advisory practice based in Mission, BC. It builds Kulshan, a free, open-source, read-only AWS audit CLI.
 
 This page is a machine-readable summary for AI agents that need a structured overview of what Kulshan is, what it does, and how to engage. It is also useful for humans skimming.
 
 ## Quick facts
 
-- **What:** Kulshan is a free, open-source, read-only AWS audit CLI.
+- **What:** MissionFinOps is an AWS bill-understanding and FinOps advisory practice. Kulshan is its free, open-source, read-only AWS audit CLI.
 - **Maintainer:** MissionFinOps (Mission, BC, Canada).
 - **License:** Apache 2.0. The IAM policy file at `/policy/` is additionally offered under CC BY 4.0.
 - **Language:** Python 3.9+.
@@ -15,7 +15,7 @@ This page is a machine-readable summary for AI agents that need a structured ove
 
 ## Pages
 
-- [Homepage](https://missionfinops.com/): product overview
+- [Homepage](https://missionfinops.com/): MissionFinOps practice overview and Kulshan free CLI entry point
 - [Sample report](https://missionfinops.com/sample/): synthetic-data fixture rendered by the real renderer
 - [IAM policy](https://missionfinops.com/policy/): 147 read-only actions across 30 AWS services, SHA256 attested, downloadable JSON
 - [Changelog](https://missionfinops.com/changelog/): release timeline
@@ -74,4 +74,4 @@ A unified `kulshan report` runs every pack and emits terminal, JSON, and HTML ou
 
 ## What this page is for
 
-This file lives at `/agents.md`. Agents can fetch it to summarize MissionFinOps and Kulshan without scraping the rest of the site. The home page, `/policy/`, and `/sample/` carry the authoritative versions; this is the structured cheat sheet.
+This file lives at `/agents.md`. Agents can fetch it to summarize MissionFinOps and Kulshan without scraping the rest of the site. The home page, `/work-with-me/`, `/policy/`, and `/sample/` carry the authoritative versions; this is the structured cheat sheet.

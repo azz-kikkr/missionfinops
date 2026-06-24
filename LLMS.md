@@ -4,7 +4,7 @@ This is a repo-root summary for AI agents and humans browsing the MissionFinOps 
 
 ## Quick facts
 
-- **What:** Kulshan is a free, open-source, read-only AWS audit CLI.
+- **What:** MissionFinOps is an AWS bill-understanding and FinOps advisory practice. Kulshan is its free, open-source, read-only AWS audit CLI.
 - **Maintainer:** MissionFinOps (Mission, BC, Canada).
 - **License:** Apache 2.0. The IAM policy file is additionally offered under CC BY 4.0.
 - **Language:** Python 3.9+.
@@ -15,13 +15,17 @@ This is a repo-root summary for AI agents and humans browsing the MissionFinOps 
 
 This repository contains the MissionFinOps website (GitHub Pages). Key files:
 
-- [`index.html`](index.html): website homepage
+- [`index.html`](index.html): MissionFinOps practice homepage and Kulshan free CLI entry point
 - [`kulshan/iam/kulshan-readonly.json`](kulshan/iam/kulshan-readonly.json): read-only IAM policy
 - [`kulshan/iam/per-check/`](kulshan/iam/per-check/): per-pack IAM policies
 - [`samples/sample-report.html`](samples/sample-report.html): synthetic-data sample report
 - [`agents.md`](agents.md): web-facing agent summary
 - [`llms.txt`](llms.txt): llms.txt-spec sitemap
 - [`CNAME`](CNAME): custom domain configuration
+
+## Positioning
+
+Kulshan produces the local evidence baseline. MissionFinOps is the advisory work that helps teams turn that evidence into ownership, decisions, and operating rhythm.
 
 ## What Kulshan does
 
