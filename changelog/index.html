@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -169,18 +169,18 @@ code{font-family:var(--f-mono);font-size:0.85em;background:rgba(255,231,200,0.04
       <article class="release" aria-label="Kulshan V0.1.0 release notes">
         <div class="release-version">V0.1.0 <span class="release-status shipped">shipped</span></div>
         <div class="release-date">2026-04-21 · Initial release</div>
-        <h2>Ten audit packs, one CLI, one report.</h2>
-        <p>The first version of Kulshan. Ten internal audit packs run through one command: <code>cost</code>, <code>sweep</code>, <code>tag</code>, <code>age</code>, <code>dr</code>, <code>pulse</code>, <code>limit</code>, <code>drift</code>, <code>topo</code>, <code>security</code>. A unified <code>Kulshan report</code> runs every pack against your AWS account and emits a Rich terminal dashboard with scores, severity breakdown, and JSON export.</p>
+        <h2>Initial local AWS baseline release.</h2>
+        <p>The first version of Kulshan. V0.1 established the local-first AWS baseline workflow and the composed read-only IAM policy. Public sample artifacts show HTML and JSON report shapes for synthetic data.</p>
         <p>Read-only AWS access from the start. The composed IAM policy ships with the source. Every action is Get, List, or Describe. The full policy and per-pack policies are at <a href="/policy/">/policy</a>.</p>
-        <p>The CLI ships with shell tab completion (bash, zsh, fish, powershell), interactive <code>?</code> inline help, AWS profile tab completion that reads <code>~/.aws/config</code> and <code>~/.aws/credentials</code>, per-pack color themes, and Rich-formatted help output.</p>
+        <p>The CLI and report surface should be checked against the installed package before documenting specific flags or shell integrations.</p>
 
         <ul class="release-bullets" aria-label="V0.1.0 highlights">
-          <li>10 audit packs in one CLI: cost, sweep, tag, age, dr, pulse, limit, drift, topo, security</li>
-          <li>Unified <code>Kulshan report</code> command across all packs</li>
-          <li>Rich terminal dashboard with score bars, severity breakdown, JSON export</li>
-          <li>Read-only IAM policy: 147 actions, 30 services, all Get/List/Describe</li>
-          <li>Shell tab completion: bash, zsh, fish, powershell</li>
-          <li>Interactive <code>?</code> inline help and AWS profile completion</li>
+          <li>Local-first AWS baseline workflow</li>
+          <li><code>Kulshan report</code> as the primary quickstart command</li>
+          <li>Synthetic HTML and JSON sample artifacts for reviewing report shape</li>
+          <li>Read-only IAM policy: 146 actions, 30 service prefixes, all Get/List/Describe</li>
+          <li>Read-only IAM policy and per-check policy files published on the website</li>
+          <li>Cost Explorer API coverage in the published policy</li>
         </ul>
       </article>
 

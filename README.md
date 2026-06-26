@@ -1,104 +1,77 @@
 # Kulshan
 
-**The blood test for your AWS bill.**
+**Local-first AWS FinOps baseline CLI.**
 
-Open-source, local-first AWS FinOps audit CLI. One command, one report. No SaaS. No telemetry.
+Kulshan v0.1 helps create the first evidence artifact before deeper FinOps investigation. It runs locally with your AWS credentials and focuses on an AWS cost baseline, spend drivers, trends, and early investigation signals.
+
+No SaaS account. No telemetry. Read-only AWS API posture.
+
+## v0.1 scope note
+
+This repository snapshot is the public MissionFinOps website and sample artifacts. It includes the read-only IAM policy and synthetic sample report. It does not include the Python package source, so this README avoids claiming CLI flags or runtime behavior that cannot be verified from the files here.
 
 ## PyPI quickstart
 
-```
+```bash
 pip install kulshan
-aws login
-kulshan report
-```
-
-## AWS Credentials
-
-Kulshan uses your existing AWS CLI credentials.
-
-Recommended:
-
-```
 aws login
 kulshan report
 ```
 
 If your AWS CLI does not support `aws login`, use:
 
-```
+```bash
 aws sso login
 ```
 
 or configure credentials with:
 
-```
+```bash
 aws configure
 ```
 
-## What is Kulshan
+## Current capabilities
 
-Kulshan is a read-only CLI that audits your AWS account and produces a scored report. It runs locally with the AWS credentials you already use. Nothing leaves your machine.
+Supported by the public docs and sample artifacts in this repo:
 
-- Local-first execution
-- Read-only IAM policy (Get, List, Describe only)
-- Terminal, JSON, and HTML output
-- Scored findings with prioritized next actions
-- Works for humans and AI agents
+- Local-first AWS FinOps baseline workflow.
+- Read-only IAM policy published at [`kulshan/iam/kulshan-readonly.json`](kulshan/iam/kulshan-readonly.json).
+- AWS Cost Explorer API coverage in the IAM policy, including cost and usage, anomaly history, forecasts, RI/SP utilization, and recommendations.
+- Synthetic sample report artifacts in HTML and JSON under [`samples/`](samples/).
+- Local report output intended for human review and follow-up investigation.
+- No telemetry claim in public copy: no SaaS account, no analytics, no crash reports, and no usage tracking.
+- Apache 2.0 open-source positioning. The IAM policy file is additionally offered under CC BY 4.0.
 
-## Why local-first
+## Roadmap / not yet current
 
-Your AWS credentials stay on your machine. Your billing data stays on your machine. The report stays on your machine.
+The public changelog lists these as v0.2 or future work, not v0.1 promises:
 
-No CUR upload. No cross-account role for a vendor. No onboarding. No telemetry.
+- SQLite scan history with score deltas.
+- Deeper cost checks such as CloudWatch Logs ingestion analysis, S3 request decomposition, AWS Config cost awareness, and cross-AZ data transfer detection.
+- AWS Tax rollup for Config, GuardDuty, Security Hub, Inspector, and CloudTrail.
+- Richer HTML report visualizations such as Sankey diagrams, cost treemaps, and severity heatmaps, if they ship.
+- TOML configuration support, if confirmed.
 
-Run the audit. Read the report. Decide what to do next.
+## What Kulshan is
 
-## What Kulshan finds
+Kulshan is a free, open-source AWS FinOps baseline CLI. The v0.1 positioning is deliberately narrow: understand the bill first, capture evidence locally, and decide what needs deeper review.
 
-- Cost drivers by service, account, and region
-- Spend changes and anomalies
-- Tagging and ownership gaps
-- Idle or orphaned resources
-- Savings Plan and RI coverage signals
-- Top actions for humans and agents
-
-## Example findings
-
-```
-Cost Drivers:
-  Amazon EC2         $14,200/mo  +12%
-  Amazon RDS          $4,800/mo  stable
-  AWS Lambda          $1,200/mo  +340% anomaly
-
-Commitments:
-  RI/SP coverage: 62% (target: 80%)
-  Utilization: 94%
-
-Top Actions:
-  1. Investigate Lambda spike
-  2. Increase SP coverage
-  3. Rightsize 2 RDS instances
-```
+It is not a hosted platform, a compliance certification, a legal opinion, or a managed remediation tool.
 
 ## Outputs
 
-- **Terminal** - default, readable summary with scores
-- **JSON** - structured findings for automation and agents
-- **HTML** - shareable report for stakeholders
+This repo includes sample HTML and JSON report artifacts:
 
-## Humans and AI agents
+- [`samples/sample-report.html`](samples/sample-report.html)
+- [`samples/sample-report.json`](samples/sample-report.json)
 
-Kulshan produces structured output that both humans and AI agents can consume.
-
-- Engineers get a scored HTML report with clear next actions
-- AI agents get JSON output through local MCP or direct invocation
-- CI/CD pipelines get exit codes (0 = clean, 1 = critical findings)
+Treat them as sample artifacts, not a guarantee that every runtime format, flag, or report section is available in every installed version.
 
 ## Read-only IAM model
 
 The IAM policy is published at [`kulshan/iam/kulshan-readonly.json`](kulshan/iam/kulshan-readonly.json) and on the website at [missionfinops.com/policy/](https://missionfinops.com/policy/).
 
-147 actions across 30 AWS services. All Get, List, or Describe. No Put, Create, Update, or Delete. SHA256-attested. Downloadable. Reusable under CC BY 4.0.
+Every action in the composed policy is a read-style AWS API action such as Get, List, or Describe. The policy includes no Put, Create, Update, Modify, or Delete actions. The policy page publishes a SHA256 hash and downloadable JSON.
 
 ## No telemetry
 
@@ -106,13 +79,15 @@ Kulshan does not phone home. No analytics. No crash reports. No usage tracking. 
 
 ## Sample report
 
-A sample report rendered against synthetic fixture data is available at [missionfinops.com/sample/](https://missionfinops.com/sample/).
+A synthetic sample report is available at [missionfinops.com/sample/](https://missionfinops.com/sample/).
+
+The sample uses fixture data. Real reports reflect your AWS account data. Kulshan v0.1 focuses on a local AWS cost baseline and early investigation signals. Deeper diagnostics and richer report visuals are roadmap items.
 
 ## MissionFinOps advisory
 
-Kulshan is the audit. MissionFinOps is the advisory work that follows.
+Kulshan is the baseline artifact. MissionFinOps is the advisory work that follows.
 
-The advisory workflow builds on the Kulshan evidence baseline to help teams prepare cost review notes, track exceptions, and identify next actions. Agent-assisted workflow support is in private preview.
+The advisory workflow builds on Kulshan evidence to help teams prepare cost review notes, track exceptions, and identify next actions.
 
 Interested? hello@missionfinops.com
 

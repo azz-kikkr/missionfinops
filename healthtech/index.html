@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -157,7 +157,7 @@ code{font-family:var(--f-mono);font-size:0.85em;background:rgba(255,231,200,0.04
       <div class="cat-row"><div class="cat-key">iam hygiene</div><div class="cat-desc">Surfaces inactive users, unused access keys, broad privilege grants, and role trust relationships open to other accounts or to the public.</div></div>
       <div class="cat-row"><div class="cat-key">public exposure</div><div class="cat-desc">Points to S3 buckets allowing public read or write, RDS instances reachable from the public internet, security groups open to the internet (<code>0.0.0.0/0</code>) on sensitive ports.</div></div>
     </div>
-    <p class="lede" style="margin-top:1.5rem">The other nine packs (cost, sweep, dr, age, drift, tag, pulse, limit, topo) come in the same run and help prepare evidence beyond security posture. The full read-only IAM policy is at <a href="/policy/">/policy</a>.</p>
+    <p class="lede" style="margin-top:1.5rem">The published IAM policy includes read-only coverage for cost and several AWS configuration areas. Treat non-cost diagnostics as evidence-gathering signals, not a complete security review. The full read-only IAM policy is at <a href="/policy/">/policy</a>.</p>
   </div>
 </section>
 
@@ -185,7 +185,7 @@ code{font-family:var(--f-mono);font-size:0.85em;background:rgba(255,231,200,0.04
     <p class="lede">Four steps. No vendor in the loop, no data leaving the account.</p>
     <ol class="steps">
       <li><strong>Attach the read-only IAM policy.</strong> The full policy with SHA256 and per-pack files is at <a href="/policy/">/policy</a>. Every action is Get, List, or Describe.</li>
-      <li><strong>Run a scan locally.</strong> <code>Kulshan report --pack security</code> writes a report to a local file. The CLI talks to AWS APIs from your machine; nothing transits a third party.</li>
+      <li><strong>Run locally.</strong> Kulshan talks to AWS APIs from your machine and produces local evidence for review. Nothing transits a third party.</li>
       <li><strong>Hand the report to your reviewer.</strong> A security or compliance officer reads the configuration findings, asks follow-up questions, and decides what matters in the context of your program.</li>
       <li><strong>Remediate on your own terms.</strong> Each finding includes the AWS resource it points to and a remediation hint. You decide what to fix and when.</li>
     </ol>

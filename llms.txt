@@ -1,15 +1,15 @@
 # Mission FinOps
 
-> An AWS FinOps advisory practice from Mission, BC, with Kulshan as the free local-first AWS audit CLI.
+> An AWS FinOps advisory practice from Mission, BC, with Kulshan as the free local-first AWS FinOps baseline CLI.
 
-Mission FinOps helps teams understand AWS bill movement, ownership, and next actions. Kulshan is the free, open-source, read-only CLI that produces the local evidence baseline. Apache 2.0. The IAM policy file at `/policy/` is additionally offered under CC BY 4.0.
+Mission FinOps helps teams understand AWS bill movement, ownership, and next actions. Kulshan v0.1 helps create a local AWS evidence baseline before deeper FinOps investigation. Apache 2.0. The IAM policy file at `/policy/` is additionally offered under CC BY 4.0.
 
 ## Pages
 
 - [Home](https://missionfinops.com/): Practice overview and Kulshan free CLI entry point
-- [Sample report](https://missionfinops.com/sample/): Synthetic-data fixture rendered by the real renderer
-- [IAM policy](https://missionfinops.com/policy/): 147 read-only actions across 30 AWS services, SHA256 attested, downloadable JSON
-- [Changelog](https://missionfinops.com/changelog/): Release history
+- [Sample report](https://missionfinops.com/sample/): Synthetic-data sample artifacts for reviewing report shape
+- [IAM policy](https://missionfinops.com/policy/): Read-only IAM policy, SHA256 attested, downloadable JSON
+- [Changelog](https://missionfinops.com/changelog/): Release history and roadmap notes
 - [Healthtech](https://missionfinops.com/healthtech/): AWS configuration evidence for healthtech teams preparing for security reviews
 - [Consultancies and MSPs](https://missionfinops.com/msp/): License arrangement for cloud consultancies and fractional CTOs
 - [About](https://missionfinops.com/about/): Founder story

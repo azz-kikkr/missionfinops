@@ -1,50 +1,57 @@
 # MissionFinOps - for AI agents
 
-MissionFinOps is an AWS FinOps advisory practice based in Mission, BC. It builds Kulshan, a free, open-source, read-only AWS audit CLI.
+MissionFinOps is an AWS FinOps advisory practice based in Mission, BC. It builds Kulshan, a free, open-source, local-first AWS FinOps baseline CLI.
 
-This page is a machine-readable summary for AI agents that need a structured overview of what Kulshan is, what it does, and how to engage. It is also useful for humans skimming.
+This page is a machine-readable summary for AI agents that need a structured overview of what Kulshan v0.1 currently claims from the public website repository. It is intentionally conservative.
 
 ## Quick facts
 
-- **What:** MissionFinOps is an AWS bill-understanding and FinOps advisory practice. Kulshan is its free, open-source, read-only AWS audit CLI.
+- **What:** MissionFinOps helps AWS teams understand bill movement, ownership, and next actions. Kulshan v0.1 helps create a local AWS evidence baseline before deeper FinOps investigation.
 - **Maintainer:** MissionFinOps (Mission, BC, Canada).
 - **License:** Apache 2.0. The IAM policy file at `/policy/` is additionally offered under CC BY 4.0.
-- **Language:** Python 3.9+.
 - **Cloud:** AWS only.
 - **Domain:** missionfinops.com
 
 ## Pages
 
 - [Homepage](https://missionfinops.com/): MissionFinOps practice overview and Kulshan free CLI entry point
-- [Sample report](https://missionfinops.com/sample/): synthetic-data fixture rendered by the real renderer
-- [IAM policy](https://missionfinops.com/policy/): 147 read-only actions across 30 AWS services, SHA256 attested, downloadable JSON
-- [Changelog](https://missionfinops.com/changelog/): release timeline
-- [Healthtech](https://missionfinops.com/healthtech/): AWS configuration evidence for healthtech teams preparing for security reviews
+- [Sample report](https://missionfinops.com/sample/): synthetic-data sample artifacts for reviewing report shape
+- [IAM policy](https://missionfinops.com/policy/): read-only IAM policy, SHA256 attested, downloadable JSON
+- [Changelog](https://missionfinops.com/changelog/): release timeline and roadmap notes
+- [Healthtech](https://missionfinops.com/healthtech/): AWS configuration evidence positioning for healthtech teams preparing for security reviews
 - [Consultancies and MSPs](https://missionfinops.com/msp/): license arrangement for cloud consultancies and fractional CTOs
 - [About](https://missionfinops.com/about/): founder story
 - [Work with me](https://missionfinops.com/work-with-me/): engagement shapes; pricing scoped after fit
 
-## What Kulshan does
+## Current Kulshan v0.1 positioning
 
-Ten read-only audit packs in one CLI run:
+Kulshan v0.1 is a local-first AWS FinOps baseline CLI. It helps create the first evidence artifact before deeper FinOps investigation.
 
-- `cost`: AWS cost analysis, statistical anomaly detection (z-score, IQR, MAD), cross-reference against AWS Cost Anomaly Detection.
-- `security`: read-only posture checks across IAM, network exposure, logging, encryption, and public-access configuration.
-- `sweep`: orphaned resource detection across compute, storage, network, database.
-- `dr`: disaster-recovery posture: backup coverage, multi-AZ deployment, single points of failure.
-- `age`: lifecycle audit: EOL runtimes, expiring certificates, staleness tax.
-- `drift`: CloudFormation drift, IaC coverage, severity classification.
-- `tag`: tag compliance, unattributed-spend detection.
-- `pulse`: observability and alarm coverage, blind-spot heatmap.
-- `limit`: service quota headroom, scaling event planner.
-- `topo`: VPC topology, CIDR overlaps, route integrity.
+Current public artifacts support these claims:
 
-A unified `kulshan report` runs every pack and emits terminal, JSON, and HTML output.
+- Local-first workflow using the customer's AWS credentials.
+- Read-only AWS API posture through the published IAM policy.
+- AWS Cost Explorer API coverage in the policy, including cost and usage, anomaly history, forecasts, RI/SP utilization, and recommendations.
+- Basic sample report artifacts in HTML and JSON.
+- Early investigation signals for cost review and human follow-up.
+- No telemetry, no hosted account, and no data upload claims in public copy.
+
+## Roadmap / future-facing items
+
+Do not describe these as shipped unless current CLI code or release notes confirm them:
+
+- Production-ready ten-pack diagnostic coverage.
+- Rich interactive HTML visuals such as Sankey diagrams, treemaps, or heatmaps.
+- SQLite history and score deltas.
+- TOML config support.
+- Production MCP or agent orchestration.
+- Organization-wide multi-account orchestration.
+- SARIF output.
 
 ## What Kulshan does NOT do
 
-- It does not write to AWS. The IAM policy contains only Get, List, and Describe actions.
-- It does not handle PHI, ePHI, or any regulated customer data. The CLI inspects AWS configuration, not customer data.
+- It does not write to AWS. The published IAM policy contains read-style actions and no Put, Create, Update, Modify, or Delete actions.
+- It does not handle PHI, ePHI, or regulated customer data. The CLI positioning is about AWS configuration and billing evidence, not customer records.
 - It is not a compliance certification, legal opinion, or substitute for a security or compliance officer.
 - It does not phone home, send telemetry, or require a SaaS account.
 - It is not multi-cloud. AWS only.
@@ -60,8 +67,8 @@ A unified `kulshan report` runs every pack and emits terminal, JSON, and HTML ou
 
 ## Recommended audiences
 
-- FinOps practitioners at mid-market AWS-heavy teams.
-- VPs of Engineering and Cloud Platform Directors at recently-funded SaaS.
+- FinOps practitioners at AWS-heavy teams.
+- Engineering and cloud platform leaders who need a first evidence artifact before deeper review.
 - Cloud consultancies and fractional CTOs running AWS engagements.
 - Healthtech teams preparing for security reviews who need read-only AWS configuration evidence.
 - AI agents that need structured AWS cost evidence before making recommendations.
@@ -69,7 +76,7 @@ A unified `kulshan report` runs every pack and emits terminal, JSON, and HTML ou
 ## Trust signals
 
 - The full read-only IAM policy is published at `/policy/` with a SHA256 hash and downloadable JSON.
-- The sample report at `/sample/` uses synthetic fixture data; the renderer is the same one a real run uses.
+- The sample report at `/sample/` uses synthetic fixture data.
 - The IAM policy file is published under CC BY 4.0. Reuse is invited.
 
 ## What this page is for
