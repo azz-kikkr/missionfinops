@@ -4,7 +4,7 @@ This is a repo-root summary for AI agents and humans browsing the MissionFinOps 
 
 ## Quick facts
 
-- **What:** MissionFinOps is an AWS bill-understanding and FinOps advisory practice. Kulshan v0.1 is its free, open-source, local-first AWS FinOps baseline CLI.
+- **What:** MissionFinOps is an AWS bill-understanding and FinOps advisory practice. Kulshan v0.1 is its free, open-source, local-first AWS bill investigation CLI.
 - **Maintainer:** MissionFinOps (Mission, BC, Canada).
 - **License:** Apache 2.0. The IAM policy file is additionally offered under CC BY 4.0.
 - **Cloud:** AWS only.
@@ -25,18 +25,20 @@ This repository contains the MissionFinOps website (GitHub Pages). Key files:
 
 ## Positioning
 
-Kulshan v0.1 produces a local AWS evidence baseline. MissionFinOps is the advisory work that helps teams turn that evidence into ownership, decisions, and operating rhythm.
+Kulshan v0.1 produces local AWS bill investigation evidence. MissionFinOps is the advisory work that helps teams turn that evidence into ownership, decisions, and operating rhythm.
 
 ## Current Kulshan v0.1 capabilities
 
 Current public artifacts support these claims:
 
-- Local-first AWS FinOps baseline workflow.
+- Local-first AWS bill investigation workflow.
 - Read-only AWS API posture through the published IAM policy.
 - AWS Cost Explorer API coverage in the policy, including cost and usage, anomaly history, forecasts, RI/SP utilization, and recommendations.
 - Basic sample report artifacts in HTML and JSON.
 - Early cost investigation signals for human review.
 - No telemetry, hosted account, or data upload claims in public copy.
+
+Kulshan should not be positioned as a generic cloud hygiene scanner, cleanup tool, idle resource finder, or broad waste scanner. Waste belongs in the copy only when it supports bill investigation and evidence-backed follow-up.
 
 ## Roadmap / not yet current
 

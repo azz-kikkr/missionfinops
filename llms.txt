@@ -1,8 +1,8 @@
 # Mission FinOps
 
-> An AWS FinOps advisory practice from Mission, BC, with Kulshan as the free local-first AWS FinOps baseline CLI.
+> An AWS FinOps advisory practice from Mission, BC, with Kulshan as the free local-first AWS bill investigation CLI.
 
-Mission FinOps helps teams understand AWS bill movement, ownership, and next actions. Kulshan v0.1 helps create a local AWS evidence baseline before deeper FinOps investigation. Apache 2.0. The IAM policy file at `/policy/` is additionally offered under CC BY 4.0.
+Mission FinOps helps teams understand AWS bill movement, ownership, and next actions. Kulshan v0.1 helps explain what changed, why spend moved, who likely owns it, and what evidence supports the answer. Apache 2.0. The IAM policy file at `/policy/` is additionally offered under CC BY 4.0.
 
 ## Pages
 

@@ -1,12 +1,12 @@
 # MissionFinOps - for AI agents
 
-MissionFinOps is an AWS FinOps advisory practice based in Mission, BC. It builds Kulshan, a free, open-source, local-first AWS FinOps baseline CLI.
+MissionFinOps is an AWS FinOps advisory practice based in Mission, BC. It builds Kulshan, a free, open-source, local-first AWS bill investigation CLI.
 
 This page is a machine-readable summary for AI agents that need a structured overview of what Kulshan v0.1 currently claims from the public website repository. It is intentionally conservative.
 
 ## Quick facts
 
-- **What:** MissionFinOps helps AWS teams understand bill movement, ownership, and next actions. Kulshan v0.1 helps create a local AWS evidence baseline before deeper FinOps investigation.
+- **What:** MissionFinOps helps AWS teams understand bill movement, ownership, and next actions. Kulshan v0.1 helps explain what changed, why spend moved, who likely owns it, and what evidence supports the answer.
 - **Maintainer:** MissionFinOps (Mission, BC, Canada).
 - **License:** Apache 2.0. The IAM policy file at `/policy/` is additionally offered under CC BY 4.0.
 - **Cloud:** AWS only.
@@ -25,7 +25,7 @@ This page is a machine-readable summary for AI agents that need a structured ove
 
 ## Current Kulshan v0.1 positioning
 
-Kulshan v0.1 is a local-first AWS FinOps baseline CLI. It helps create the first evidence artifact before deeper FinOps investigation.
+Kulshan v0.1 is a local-first AWS bill investigation CLI. It helps create the first local evidence artifact before deeper FinOps investigation.
 
 Current public artifacts support these claims:
 
@@ -35,6 +35,8 @@ Current public artifacts support these claims:
 - Basic sample report artifacts in HTML and JSON.
 - Early investigation signals for cost review and human follow-up.
 - No telemetry, no hosted account, and no data upload claims in public copy.
+
+Do not position Kulshan as a generic cloud hygiene scanner, cleanup tool, idle resource finder, or broad waste scanner. Waste should appear only where it supports bill investigation and evidence-backed follow-up.
 
 ## Roadmap / future-facing items
 
@@ -51,7 +53,7 @@ Do not describe these as shipped unless current CLI code or release notes confir
 ## What Kulshan does NOT do
 
 - It does not write to AWS. The published IAM policy contains read-style actions and no Put, Create, Update, Modify, or Delete actions.
-- It does not handle PHI, ePHI, or regulated customer data. The CLI positioning is about AWS configuration and billing evidence, not customer records.
+- It does not handle PHI, ePHI, or regulated customer data. The CLI positioning is about AWS bill investigation and evidence, not customer records.
 - It is not a compliance certification, legal opinion, or substitute for a security or compliance officer.
 - It does not phone home, send telemetry, or require a SaaS account.
 - It is not multi-cloud. AWS only.

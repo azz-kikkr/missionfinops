@@ -1,8 +1,8 @@
 # Kulshan
 
-**Local-first AWS FinOps baseline CLI.**
+**Local-first AWS bill investigation CLI.**
 
-Kulshan v0.1 helps create the first evidence artifact before deeper FinOps investigation. It runs locally with your AWS credentials and focuses on an AWS cost baseline, spend drivers, trends, and early investigation signals.
+Kulshan v0.1 helps explain AWS bill movement locally before deeper FinOps investigation. It runs with your AWS credentials and focuses on what changed, why spend moved, who likely owns the cost, and what evidence supports the answer.
 
 No SaaS account. No telemetry. Read-only AWS API posture.
 
@@ -34,11 +34,11 @@ aws configure
 
 Supported by the public docs and sample artifacts in this repo:
 
-- Local-first AWS FinOps baseline workflow.
+- Local-first AWS bill investigation workflow.
 - Read-only IAM policy published at [`kulshan/iam/kulshan-readonly.json`](kulshan/iam/kulshan-readonly.json).
 - AWS Cost Explorer API coverage in the IAM policy, including cost and usage, anomaly history, forecasts, RI/SP utilization, and recommendations.
 - Synthetic sample report artifacts in HTML and JSON under [`samples/`](samples/).
-- Local report output intended for human review and follow-up investigation.
+- Local report output intended for finance and engineering review, ownership discussion, and follow-up investigation.
 - No telemetry claim in public copy: no SaaS account, no analytics, no crash reports, and no usage tracking.
 - Apache 2.0 open-source positioning. The IAM policy file is additionally offered under CC BY 4.0.
 
@@ -54,9 +54,9 @@ The public changelog lists these as v0.2 or future work, not v0.1 promises:
 
 ## What Kulshan is
 
-Kulshan is a free, open-source AWS FinOps baseline CLI. The v0.1 positioning is deliberately narrow: understand the bill first, capture evidence locally, and decide what needs deeper review.
+Kulshan is a free, open-source AWS bill investigation CLI. The v0.1 positioning is deliberately narrow: understand the bill first, capture evidence locally, and decide what needs deeper review.
 
-It is not a hosted platform, a compliance certification, a legal opinion, or a managed remediation tool.
+It is not a hosted platform, a compliance certification, a legal opinion, a managed remediation tool, or a generic cloud cleanup scanner.
 
 ## Outputs
 
@@ -81,11 +81,11 @@ Kulshan does not phone home. No analytics. No crash reports. No usage tracking. 
 
 A synthetic sample report is available at [missionfinops.com/sample/](https://missionfinops.com/sample/).
 
-The sample uses fixture data. Real reports reflect your AWS account data. Kulshan v0.1 focuses on a local AWS cost baseline and early investigation signals. Deeper diagnostics and richer report visuals are roadmap items.
+The sample uses fixture data. Real reports reflect your AWS account data. Kulshan v0.1 focuses on local AWS bill investigation evidence and early cost movement signals. Deeper diagnostics and richer report visuals are roadmap items.
 
 ## MissionFinOps advisory
 
-Kulshan is the baseline artifact. MissionFinOps is the advisory work that follows.
+Kulshan is the local bill evidence artifact. MissionFinOps is the advisory work that follows.
 
 The advisory workflow builds on Kulshan evidence to help teams prepare cost review notes, track exceptions, and identify next actions.
 
